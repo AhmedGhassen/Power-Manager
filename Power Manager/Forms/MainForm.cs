@@ -19,7 +19,8 @@ namespace PowerManager.Forms
         private Timer timer = new Timer();
         private decimal minutes;
         private decimal hours;
-        private decimal allSeconds;
+        
+        private decimal reminingTimeInMainTimer;
         private bool timerStoped = true;
 
         //Idle Timer
@@ -64,8 +65,8 @@ namespace PowerManager.Forms
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-            allSeconds--;
-            if (allSeconds < 0)
+            reminingTimeInMainTimer--;
+            if (reminingTimeInMainTimer < 0)
             {
                 stopTimer();
                 this.Hide();
@@ -75,7 +76,7 @@ namespace PowerManager.Forms
             }
             else
             {
-                var timeRemaining = TimeSpan.FromSeconds(double.Parse(allSeconds.ToString()));
+                var timeRemaining = TimeSpan.FromSeconds(double.Parse(reminingTimeInMainTimer.ToString()));
                 this.time = String.Format("{0:00}", timeRemaining.Hours) + " : " + String.Format("{0:00}", timeRemaining.Minutes) + " : " + String.Format("{0:00}", timeRemaining.Seconds);
                 timeLeftLabel.Text = this.time;
                 notifyIcon1.Text = notifyIcon1.Text = "Running | " + this.time;
@@ -88,15 +89,14 @@ namespace PowerManager.Forms
         {
             if (Properties.Settings.Default.MainTimerReminderEnabled)
             {
-                reminderRemainingTime--;
-                if (reminderRemainingTime >= 0)
+                if (reminingTimeInMainTimer - reminderRemainingTime >= 0)
                 {
                     refreshReminderDisplay();
                 }
 
-                if (reminderRemainingTime == 0)
+                if (reminingTimeInMainTimer - reminderRemainingTime == 0)
                 {
-                    ReminderMessageForm reminderMessage = new ReminderMessageForm(allSeconds);
+                    ReminderMessageForm reminderMessage = new ReminderMessageForm(reminingTimeInMainTimer);
                     reminderMessage.Show();
                     if (Properties.Settings.Default.MainTimerReminderDisabledAfterGoinOn)
                     {
@@ -114,7 +114,7 @@ namespace PowerManager.Forms
             {
                 this.minutes = minutes_field.Value;
                 this.hours = hours_field.Value;
-                this.allSeconds = minutes * 60 + hours * 3600;
+                this.reminingTimeInMainTimer = minutes * 60 + hours * 3600;
                 minutes_field.Value = 0;
                 hours_field.Value = 0;
                 timeLeftLabel.Text = String.Format("{0:00}", hours) + " : " + String.Format("{0:00}", minutes) + " : 00";
@@ -124,7 +124,7 @@ namespace PowerManager.Forms
                 timerStoped = false;
                 reminderAllSeconds = Properties.Settings.Default.MainTimerReminderTimeInSeconds;
                 refreshReminderDisplay();
-                reminderRemainingTime = allSeconds - reminderAllSeconds;
+                reminderRemainingTime = reminingTimeInMainTimer - reminderAllSeconds;
                 timer.Start();
                 if (Properties.Settings.Default.DisableIdleWhenTimerRunning)
                 {
@@ -280,8 +280,12 @@ namespace PowerManager.Forms
 
         private void refreshReminderDisplay()
         {
-            var remainingTimeReminder = TimeSpan.FromSeconds(double.Parse((reminderRemainingTime).ToString()));
-            toolStripStatusLabel_reminder_timer.Text = "Reminder Timer  " + String.Format("{0:00}", remainingTimeReminder.Hours) + " : " + String.Format("{0:00}", remainingTimeReminder.Minutes) + " : " + String.Format("{0:00}", remainingTimeReminder.Seconds);
+            if (reminingTimeInMainTimer - reminderRemainingTime >= 0)
+            {
+                var remainingTimeReminder = TimeSpan.FromSeconds(double.Parse((reminingTimeInMainTimer - reminderRemainingTime).ToString()));
+                toolStripStatusLabel_reminder_timer.Text = "Reminder Timer  " + String.Format("{0:00}", remainingTimeReminder.Hours) + " : " + String.Format("{0:00}", remainingTimeReminder.Minutes) + " : " + String.Format("{0:00}", remainingTimeReminder.Seconds);
+
+            }
 
         }
 
