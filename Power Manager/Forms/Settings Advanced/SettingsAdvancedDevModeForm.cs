@@ -24,15 +24,6 @@ namespace PowerManager.Forms.Settings_Advanced
             checkBox_mode_test_lock.Checked = Properties.Settings.Default.ModeTestForLockPc;
         }
 
-        private void save_btn_Click(object sender, EventArgs e)
-        {
-            Properties.Settings.Default.ReminderTimerInStatusBar = checkBox_reminder_timer.Checked;
-            Properties.Settings.Default.IdleTimerStatusInStatusBar = checkBox_idle_timer.Checked;
-            Properties.Settings.Default.ModeTestForClosePC = checkBox_mode_test_close.Checked;
-            Properties.Settings.Default.ModeTestForLockPc = checkBox_mode_test_lock.Checked;
-            Properties.Settings.Default.Save();
-        }
-
         private void checkBox_mode_test_Click(object sender, EventArgs e)
         {
             if (!checkBox_mode_test_close.Checked)
@@ -43,6 +34,8 @@ namespace PowerManager.Forms.Settings_Advanced
                     checkBox_mode_test_close.Checked = !checkBox_mode_test_close.Checked;
                 }
             }
+            Properties.Settings.Default.ModeTestForClosePC = checkBox_mode_test_close.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void checkBox_mode_test_lock_Click(object sender, EventArgs e)
@@ -55,6 +48,20 @@ namespace PowerManager.Forms.Settings_Advanced
                     checkBox_mode_test_lock.Checked = !checkBox_mode_test_lock.Checked;
                 }
             }
+            Properties.Settings.Default.ModeTestForLockPc = checkBox_mode_test_lock.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void checkBox_reminder_timer_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.ReminderTimerInStatusBar = checkBox_reminder_timer.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void checkBox_idle_timer_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.IdleTimerStatusInStatusBar = checkBox_idle_timer.Checked;
+            Properties.Settings.Default.Save();
         }
     }
 }

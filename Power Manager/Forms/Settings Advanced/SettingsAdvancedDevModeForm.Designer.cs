@@ -32,7 +32,6 @@
             this.checkBox_reminder_timer = new System.Windows.Forms.CheckBox();
             this.checkBox_idle_timer = new System.Windows.Forms.CheckBox();
             this.checkBox_mode_test_close = new System.Windows.Forms.CheckBox();
-            this.save_btn = new System.Windows.Forms.Button();
             this.checkBox_mode_test_lock = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
@@ -45,6 +44,7 @@
             this.checkBox_reminder_timer.TabIndex = 0;
             this.checkBox_reminder_timer.Text = "Show Reminder Timer in status bar";
             this.checkBox_reminder_timer.UseVisualStyleBackColor = true;
+            this.checkBox_reminder_timer.CheckedChanged += new System.EventHandler(this.checkBox_reminder_timer_CheckedChanged);
             // 
             // checkBox_idle_timer
             // 
@@ -55,6 +55,7 @@
             this.checkBox_idle_timer.TabIndex = 1;
             this.checkBox_idle_timer.Text = "Show Pc idle Timer in status bar";
             this.checkBox_idle_timer.UseVisualStyleBackColor = true;
+            this.checkBox_idle_timer.CheckedChanged += new System.EventHandler(this.checkBox_idle_timer_CheckedChanged);
             // 
             // checkBox_mode_test_close
             // 
@@ -66,18 +67,6 @@
             this.checkBox_mode_test_close.Text = "Test Mode for \'Close Computer\'";
             this.checkBox_mode_test_close.UseVisualStyleBackColor = true;
             this.checkBox_mode_test_close.Click += new System.EventHandler(this.checkBox_mode_test_Click);
-            // 
-            // save_btn
-            // 
-            this.save_btn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.save_btn.Location = new System.Drawing.Point(256, 186);
-            this.save_btn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.save_btn.Name = "save_btn";
-            this.save_btn.Size = new System.Drawing.Size(130, 37);
-            this.save_btn.TabIndex = 27;
-            this.save_btn.Text = "Save";
-            this.save_btn.UseVisualStyleBackColor = true;
-            this.save_btn.Click += new System.EventHandler(this.save_btn_Click);
             // 
             // checkBox_mode_test_lock
             // 
@@ -95,9 +84,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(399, 235);
+            this.ClientSize = new System.Drawing.Size(399, 161);
             this.Controls.Add(this.checkBox_mode_test_lock);
-            this.Controls.Add(this.save_btn);
             this.Controls.Add(this.checkBox_mode_test_close);
             this.Controls.Add(this.checkBox_idle_timer);
             this.Controls.Add(this.checkBox_reminder_timer);
@@ -121,7 +109,6 @@
         private System.Windows.Forms.CheckBox checkBox_reminder_timer;
         private System.Windows.Forms.CheckBox checkBox_idle_timer;
         private System.Windows.Forms.CheckBox checkBox_mode_test_close;
-        private System.Windows.Forms.Button save_btn;
         private System.Windows.Forms.CheckBox checkBox_mode_test_lock;
     }
 }

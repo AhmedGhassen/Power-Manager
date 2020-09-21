@@ -37,36 +37,6 @@ namespace PowerManager.Forms
             linkLabel_advanced_dev_mode.Enabled = checkBox_dev_mode.Checked;
         }
 
-
-
-        private void save_btn_Click(object sender, EventArgs e)
-        {
-            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-            if (checkBox_Startup.Checked)
-            {
-                registryKey.SetValue("Power Manager", Application.ExecutablePath.ToString());
-            }
-            else
-            {
-                var value = registryKey.GetValue("Power Manager");
-                if (value != null)
-                {
-                    registryKey.DeleteValue("Power Manager");
-                }
-            }
-            Properties.Settings.Default.runOnStartup = checkBox_Startup.Checked;
-            Properties.Settings.Default.MinToTrayWhenClosing = checkBox_min_to_tray_when_closing.Checked;
-            Properties.Settings.Default.MinToTrayWhenOpening = checkBox_min_to_tray_when_runing.Checked;
-
-            Properties.Settings.Default.PcIdleReminderEnabled = checkBox_pc_idle.Checked;
-
-            Properties.Settings.Default.Show1MnWarning = checkBox_show_1mn_warning.Checked;
-            Properties.Settings.Default.ModeDev = checkBox_dev_mode.Checked;
-            Properties.Settings.Default.Save();
-            this.Close();
-        }
-
-
         private void checkBox_pc_idle_CheckedChanged(object sender, EventArgs e)
         {
             linkLabel_advanced.Enabled = checkBox_pc_idle.Checked;
@@ -74,6 +44,8 @@ namespace PowerManager.Forms
             {
                 showAdvancedPcIdle();
             }
+            Properties.Settings.Default.PcIdleReminderEnabled = checkBox_pc_idle.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void showAdvancedPcIdle()
@@ -120,6 +92,8 @@ namespace PowerManager.Forms
                 }
             }
             linkLabel_advanced_dev_mode.Enabled = checkBox_dev_mode.Checked;
+            Properties.Settings.Default.ModeDev = checkBox_dev_mode.Checked;
+            Properties.Settings.Default.Save();
         }
 
 
@@ -146,6 +120,53 @@ namespace PowerManager.Forms
             {
                 SettingsAdvancedDev.Focus();
             }
+        }
+
+        private void checkBox_Startup_CheckedChanged(object sender, EventArgs e)
+        {
+            RegistryKey registryKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+            if (checkBox_Startup.Checked)
+            {
+                try
+                {
+                    registryKey.SetValue("Power Manager", Application.ExecutablePath.ToString());
+
+                }
+                catch (System.UnauthorizedAccessException error)
+                {
+                    checkBox_Startup.Checked = !checkBox_Startup.Checked;
+                    MessageBox.Show(this,"Action blocked", "Power Manager | Settings | Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                var value = registryKey.GetValue("Power Manager");
+                if (value != null)
+                {
+                    registryKey.DeleteValue("Power Manager");
+                }
+
+            }
+            Properties.Settings.Default.runOnStartup = checkBox_Startup.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void checkBox_min_to_tray_when_closing_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.MinToTrayWhenClosing = checkBox_min_to_tray_when_closing.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void checkBox_min_to_tray_when_runing_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.MinToTrayWhenOpening = checkBox_min_to_tray_when_runing.Checked;
+            Properties.Settings.Default.Save();
+        }
+
+        private void checkBox_show_1mn_warning_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Show1MnWarning = checkBox_show_1mn_warning.Checked;
+            Properties.Settings.Default.Save();
         }
     }
 }

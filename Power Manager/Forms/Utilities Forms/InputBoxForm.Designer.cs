@@ -74,9 +74,11 @@
             // 
             // InputBoxForm
             // 
+            this.AcceptButton = this.btn_ok;
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.btnCancel;
             this.ClientSize = new System.Drawing.Size(500, 146);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btn_ok);

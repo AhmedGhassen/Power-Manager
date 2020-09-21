@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SettingsForm));
-            this.save_btn = new System.Windows.Forms.Button();
             this.checkBox_Startup = new System.Windows.Forms.CheckBox();
             this.checkBox_min_to_tray_when_closing = new System.Windows.Forms.CheckBox();
             this.checkBox_min_to_tray_when_runing = new System.Windows.Forms.CheckBox();
@@ -40,18 +39,6 @@
             this.linkLabel_advanced_dev_mode = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
-            // save_btn
-            // 
-            this.save_btn.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.save_btn.Location = new System.Drawing.Point(407, 225);
-            this.save_btn.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.save_btn.Name = "save_btn";
-            this.save_btn.Size = new System.Drawing.Size(130, 37);
-            this.save_btn.TabIndex = 2;
-            this.save_btn.Text = "Save";
-            this.save_btn.UseVisualStyleBackColor = true;
-            this.save_btn.Click += new System.EventHandler(this.save_btn_Click);
-            // 
             // checkBox_Startup
             // 
             this.checkBox_Startup.Location = new System.Drawing.Point(13, 12);
@@ -61,6 +48,7 @@
             this.checkBox_Startup.TabIndex = 3;
             this.checkBox_Startup.Text = "Run on Windows startup";
             this.checkBox_Startup.UseVisualStyleBackColor = true;
+            this.checkBox_Startup.CheckedChanged += new System.EventHandler(this.checkBox_Startup_CheckedChanged);
             // 
             // checkBox_min_to_tray_when_closing
             // 
@@ -71,6 +59,7 @@
             this.checkBox_min_to_tray_when_closing.TabIndex = 21;
             this.checkBox_min_to_tray_when_closing.Text = "Minimise to tray when closing";
             this.checkBox_min_to_tray_when_closing.UseVisualStyleBackColor = true;
+            this.checkBox_min_to_tray_when_closing.CheckedChanged += new System.EventHandler(this.checkBox_min_to_tray_when_closing_CheckedChanged);
             // 
             // checkBox_min_to_tray_when_runing
             // 
@@ -79,8 +68,9 @@
             this.checkBox_min_to_tray_when_runing.Name = "checkBox_min_to_tray_when_runing";
             this.checkBox_min_to_tray_when_runing.Size = new System.Drawing.Size(444, 30);
             this.checkBox_min_to_tray_when_runing.TabIndex = 22;
-            this.checkBox_min_to_tray_when_runing.Text = "Minimize to tray when opening (Beta)";
+            this.checkBox_min_to_tray_when_runing.Text = "Minimize to tray when opening (Bêta)";
             this.checkBox_min_to_tray_when_runing.UseVisualStyleBackColor = true;
+            this.checkBox_min_to_tray_when_runing.CheckedChanged += new System.EventHandler(this.checkBox_min_to_tray_when_runing_CheckedChanged);
             // 
             // checkBox_pc_idle
             // 
@@ -88,9 +78,9 @@
             this.checkBox_pc_idle.Location = new System.Drawing.Point(13, 155);
             this.checkBox_pc_idle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.checkBox_pc_idle.Name = "checkBox_pc_idle";
-            this.checkBox_pc_idle.Size = new System.Drawing.Size(445, 29);
+            this.checkBox_pc_idle.Size = new System.Drawing.Size(381, 29);
             this.checkBox_pc_idle.TabIndex = 23;
-            this.checkBox_pc_idle.Text = "Close / Lock computer when it is idle (Bêta)";
+            this.checkBox_pc_idle.Text = "Close / Lock computer when it is idle";
             this.checkBox_pc_idle.UseVisualStyleBackColor = true;
             this.checkBox_pc_idle.CheckedChanged += new System.EventHandler(this.checkBox_pc_idle_CheckedChanged);
             // 
@@ -104,6 +94,7 @@
             this.checkBox_show_1mn_warning.Text = "Show 1 minute warning";
             this.checkBox_show_1mn_warning.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.checkBox_show_1mn_warning.UseVisualStyleBackColor = true;
+            this.checkBox_show_1mn_warning.CheckedChanged += new System.EventHandler(this.checkBox_show_1mn_warning_CheckedChanged);
             // 
             // checkBox_dev_mode
             // 
@@ -145,7 +136,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(551, 274);
+            this.ClientSize = new System.Drawing.Size(551, 238);
             this.Controls.Add(this.linkLabel_advanced_dev_mode);
             this.Controls.Add(this.linkLabel_advanced);
             this.Controls.Add(this.checkBox_dev_mode);
@@ -154,7 +145,6 @@
             this.Controls.Add(this.checkBox_min_to_tray_when_runing);
             this.Controls.Add(this.checkBox_min_to_tray_when_closing);
             this.Controls.Add(this.checkBox_Startup);
-            this.Controls.Add(this.save_btn);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -171,7 +161,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button save_btn;
         private System.Windows.Forms.CheckBox checkBox_Startup;
         private System.Windows.Forms.CheckBox checkBox_min_to_tray_when_closing;
         private System.Windows.Forms.CheckBox checkBox_min_to_tray_when_runing;

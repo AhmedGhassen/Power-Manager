@@ -39,7 +39,7 @@ namespace PowerManager.Forms
         {
             if (checkBox_main_timer.Checked && hours_field_main_timer.Value == 0 && minutes_field_main_timer.Value == 0)
             {
-                MessageBox.Show("Some fields are empry", "Error | Reminder | Power Manager", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Some fields are empry", "Power Manager | Reminder | Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DialogResult = DialogResult.None;
                 return;
             }

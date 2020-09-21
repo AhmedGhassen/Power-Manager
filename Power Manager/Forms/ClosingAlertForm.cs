@@ -41,11 +41,11 @@ namespace PowerManager.Forms
             var action = Properties.Settings.Default.PcIdleReminderAction;
             if (action == 1)
             {
-                label_action.Text = "Computer will shutdown in ";
+                label_action.Text = "Computer will close in ";
             }
             else if (action == 2)
             {
-                label_action.Text = "Workstation will lock in ";
+                label_action.Text = "Computer will lock in ";
             }
             timer.Interval = 1000;
             timer.Tick += Timer_Tick;

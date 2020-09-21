@@ -174,7 +174,6 @@
     <Content Include="Images\stop.png" />
     <Content Include="Images\timer.png" />
     <Content Include="Images\update.png" />
-    <None Include="Resources\pause.bmp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Power_API\Power_API.csproj">

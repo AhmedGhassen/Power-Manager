@@ -61,9 +61,9 @@
             this.checkBox_disbale_idle_when_timer_on.Location = new System.Drawing.Point(13, 12);
             this.checkBox_disbale_idle_when_timer_on.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.checkBox_disbale_idle_when_timer_on.Name = "checkBox_disbale_idle_when_timer_on";
-            this.checkBox_disbale_idle_when_timer_on.Size = new System.Drawing.Size(479, 29);
+            this.checkBox_disbale_idle_when_timer_on.Size = new System.Drawing.Size(415, 29);
             this.checkBox_disbale_idle_when_timer_on.TabIndex = 36;
-            this.checkBox_disbale_idle_when_timer_on.Text = "Disable when timer is running or paused (Bêta)";
+            this.checkBox_disbale_idle_when_timer_on.Text = "Disable when timer is running or paused";
             this.checkBox_disbale_idle_when_timer_on.UseVisualStyleBackColor = true;
             // 
             // radioButton_lock_workspace
@@ -146,6 +146,7 @@
             // 
             // SettingsAdvancedPcIdleForm
             // 
+            this.AcceptButton = this.save_btn;
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;

@@ -17,7 +17,7 @@ namespace PowerManager.Controllers
         {
             if( Properties.Settings.Default.ModeDev && Properties.Settings.Default.ModeTestForClosePC)
             {
-                MessageBox.Show("'Closing Computer' feature has been disactivated for testing perposes", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("'Closing Computer' feature has been disactivated for testing perposes", "Power Manager | Developer Mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } else
             {
                 Power_Functions.ShutdownComputer();
@@ -34,7 +34,7 @@ namespace PowerManager.Controllers
         {
             if (Properties.Settings.Default.ModeDev && Properties.Settings.Default.ModeTestForLockPc)
             {
-                MessageBox.Show("'Lock Computer' has been disactivated for testing perposes","Information",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("'Lock Computer' has been disactivated for testing perposes","Power Manager | Developer Mode",MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {

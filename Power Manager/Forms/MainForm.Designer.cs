@@ -66,9 +66,9 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel_test_close_mode = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabel_test_lock_mode = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel_reminder_timer = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel_idle_timer = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel_test_lock_mode = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer_groupe_box.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minutes_field)).BeginInit();
@@ -184,20 +184,20 @@
             // 
             this.lockWorkstationToolStripMenuItem.Image = global::PowerManager.Properties.Resources._lock;
             this.lockWorkstationToolStripMenuItem.Name = "lockWorkstationToolStripMenuItem";
-            this.lockWorkstationToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
+            this.lockWorkstationToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.lockWorkstationToolStripMenuItem.Text = "Lock Computer";
             this.lockWorkstationToolStripMenuItem.Click += new System.EventHandler(this.lockWorkstationToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // reminderToolStripMenuItem
             // 
             this.reminderToolStripMenuItem.Image = global::PowerManager.Properties.Resources.reminder;
             this.reminderToolStripMenuItem.Name = "reminderToolStripMenuItem";
-            this.reminderToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
+            this.reminderToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.reminderToolStripMenuItem.Text = "Reminder";
             this.reminderToolStripMenuItem.Click += new System.EventHandler(this.reminderToolStripMenuItem_Click);
             // 
@@ -205,20 +205,20 @@
             // 
             this.optionsToolStripMenuItem.Image = global::PowerManager.Properties.Resources.settings;
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.optionsToolStripMenuItem.Text = "Settings";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = global::PowerManager.Properties.Resources.exit;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -421,6 +421,16 @@
             this.toolStripStatusLabel_test_close_mode.Size = new System.Drawing.Size(130, 19);
             this.toolStripStatusLabel_test_close_mode.Text = "Test Mode \'Close\' : ON";
             // 
+            // toolStripStatusLabel_test_lock_mode
+            // 
+            this.toolStripStatusLabel_test_lock_mode.BackColor = System.Drawing.Color.Transparent;
+            this.toolStripStatusLabel_test_lock_mode.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
+            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
+            this.toolStripStatusLabel_test_lock_mode.Name = "toolStripStatusLabel_test_lock_mode";
+            this.toolStripStatusLabel_test_lock_mode.Size = new System.Drawing.Size(126, 19);
+            this.toolStripStatusLabel_test_lock_mode.Text = "Test Mode \'Lock\' : ON";
+            // 
             // toolStripStatusLabel_reminder_timer
             // 
             this.toolStripStatusLabel_reminder_timer.BackColor = System.Drawing.Color.Transparent;
@@ -442,17 +452,7 @@
             this.toolStripStatusLabel_idle_timer.Text = "Idle Timer  00 : 00 : 00";
             this.toolStripStatusLabel_idle_timer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // toolStripStatusLabel_test_lock_mode
-            // 
-            this.toolStripStatusLabel_test_lock_mode.BackColor = System.Drawing.Color.Transparent;
-            this.toolStripStatusLabel_test_lock_mode.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-            this.toolStripStatusLabel_test_lock_mode.Name = "toolStripStatusLabel_test_lock_mode";
-            this.toolStripStatusLabel_test_lock_mode.Size = new System.Drawing.Size(126, 19);
-            this.toolStripStatusLabel_test_lock_mode.Text = "Test Mode \'Lock\' : ON";
-            // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -468,7 +468,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Power Manager";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);

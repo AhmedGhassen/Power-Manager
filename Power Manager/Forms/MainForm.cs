@@ -25,6 +25,7 @@ namespace PowerManager.Forms
         //Idle Timer
         private Timer timerWhenPcIdle = new Timer();
         private decimal reminderAllSeconds;
+        private decimal reminderRemainingTime;
 
         //Forms
         private SettingsForm settingsForm = null;
@@ -87,13 +88,13 @@ namespace PowerManager.Forms
         {
             if (Properties.Settings.Default.MainTimerReminderEnabled)
             {
-                reminderAllSeconds--;
-                if (reminderAllSeconds >= 0)
+                reminderRemainingTime--;
+                if (reminderRemainingTime >= 0)
                 {
                     refreshReminderDisplay();
                 }
 
-                if (reminderAllSeconds == 0)
+                if (reminderRemainingTime == 0)
                 {
                     ReminderMessageForm reminderMessage = new ReminderMessageForm(allSeconds);
                     reminderMessage.Show();
@@ -123,6 +124,7 @@ namespace PowerManager.Forms
                 timerStoped = false;
                 reminderAllSeconds = Properties.Settings.Default.MainTimerReminderTimeInSeconds;
                 refreshReminderDisplay();
+                reminderRemainingTime = allSeconds - reminderAllSeconds;
                 timer.Start();
                 if (Properties.Settings.Default.DisableIdleWhenTimerRunning)
                 {
@@ -143,7 +145,7 @@ namespace PowerManager.Forms
         private void stop_btn_Click(object sender, EventArgs e)
         {
             stopTimer();
-            reminderAllSeconds = Properties.Settings.Default.MainTimerReminderTimeInSeconds;
+            reminderRemainingTime = Properties.Settings.Default.MainTimerReminderTimeInSeconds;
             refreshReminderDisplay();
 
             if (Properties.Settings.Default.PcIdleReminderEnabled && Properties.Settings.Default.DisableIdleWhenTimerRunning)
@@ -247,8 +249,8 @@ namespace PowerManager.Forms
             {
                 settingsForm = new SettingsForm();
                 settingsForm.ShowDialog();
-                if (settingsForm.DialogResult == DialogResult.OK)
-                {
+                //if (settingsForm.DialogResult == DialogResult.OK)
+                //{
                     if (Properties.Settings.Default.PcIdleReminderEnabled)
                     {
                         if (!timerWhenPcIdle.Enabled)
@@ -266,7 +268,7 @@ namespace PowerManager.Forms
                         stopIdleTimer();
                     }
 
-                }
+                //}
                 checkDevelopperMode();
                 settingsForm = null;
             }
@@ -278,7 +280,7 @@ namespace PowerManager.Forms
 
         private void refreshReminderDisplay()
         {
-            var remainingTimeReminder = TimeSpan.FromSeconds(double.Parse((reminderAllSeconds).ToString()));
+            var remainingTimeReminder = TimeSpan.FromSeconds(double.Parse((reminderRemainingTime).ToString()));
             toolStripStatusLabel_reminder_timer.Text = "Reminder Timer  " + String.Format("{0:00}", remainingTimeReminder.Hours) + " : " + String.Format("{0:00}", remainingTimeReminder.Minutes) + " : " + String.Format("{0:00}", remainingTimeReminder.Seconds);
 
         }
@@ -286,7 +288,7 @@ namespace PowerManager.Forms
         private void Form1_Load(object sender, EventArgs e)
         {
             checkDevelopperMode();
-            reminderAllSeconds = Properties.Settings.Default.MainTimerReminderTimeInSeconds;
+            reminderRemainingTime = Properties.Settings.Default.MainTimerReminderTimeInSeconds;
             refreshReminderDisplay();
             if (Properties.Settings.Default.PcIdleReminderEnabled)
             {
@@ -352,5 +354,6 @@ namespace PowerManager.Forms
                 toolStripStatusLabel_test_lock_mode.Visible = Properties.Settings.Default.ModeTestForLockPc;
             }
         }
+
     }
 }
