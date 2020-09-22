@@ -1,23 +1,15 @@
-﻿using PowerManager.API;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 using Power_API;
 namespace PowerManager.Controllers
 {
     class ActionController
     {
         
-        public static void ShutdownComputer()
+        public static void ShutdownComputer(Form form)
         {
             if( Properties.Settings.Default.ModeDev && Properties.Settings.Default.ModeTestForClosePC)
             {
-                MessageBox.Show("'Closing Computer' feature has been disactivated for testing perposes", "Power Manager | Developer Mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(form,"'Closing Computer' feature has been disactivated for testing perposes", "Power Manager | Developer Mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } else
             {
                 Power_Functions.ShutdownComputer();
@@ -30,11 +22,11 @@ namespace PowerManager.Controllers
             return Power_Functions.GetComputeIdleTimeInSeconds();
         }
 
-        public static void LockComputer()
+        public static void LockComputer(Form form)
         {
             if (Properties.Settings.Default.ModeDev && Properties.Settings.Default.ModeTestForLockPc)
             {
-                MessageBox.Show("'Lock Computer' has been disactivated for testing perposes","Power Manager | Developer Mode",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(form,"'Lock Computer' has been disactivated for testing perposes","Power Manager | Developer Mode",MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {

@@ -32,14 +32,14 @@
             this.save_btn = new System.Windows.Forms.Button();
             this.checkBox_disbale_idle_when_timer_on = new System.Windows.Forms.CheckBox();
             this.radioButton_lock_workspace = new System.Windows.Forms.RadioButton();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.groupBox_minutes = new System.Windows.Forms.GroupBox();
             this.minutes_field = new System.Windows.Forms.NumericUpDown();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox_hours = new System.Windows.Forms.GroupBox();
             this.hours_field = new System.Windows.Forms.NumericUpDown();
             this.radioButton_close_computer = new System.Windows.Forms.RadioButton();
-            this.groupBox4.SuspendLayout();
+            this.groupBox_minutes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minutes_field)).BeginInit();
-            this.groupBox3.SuspendLayout();
+            this.groupBox_hours.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hours_field)).BeginInit();
             this.SuspendLayout();
             // 
@@ -78,18 +78,18 @@
             this.radioButton_lock_workspace.Text = "Lock Computer";
             this.radioButton_lock_workspace.UseVisualStyleBackColor = true;
             // 
-            // groupBox4
+            // groupBox_minutes
             // 
-            this.groupBox4.Controls.Add(this.minutes_field);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.groupBox4.Location = new System.Drawing.Point(275, 119);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox4.Size = new System.Drawing.Size(233, 76);
-            this.groupBox4.TabIndex = 34;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Minutes";
+            this.groupBox_minutes.Controls.Add(this.minutes_field);
+            this.groupBox_minutes.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.groupBox_minutes.Location = new System.Drawing.Point(275, 119);
+            this.groupBox_minutes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.groupBox_minutes.Name = "groupBox_minutes";
+            this.groupBox_minutes.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.groupBox_minutes.Size = new System.Drawing.Size(233, 76);
+            this.groupBox_minutes.TabIndex = 34;
+            this.groupBox_minutes.TabStop = false;
+            this.groupBox_minutes.Text = "Minutes";
             // 
             // minutes_field
             // 
@@ -105,18 +105,18 @@
             this.minutes_field.Size = new System.Drawing.Size(151, 27);
             this.minutes_field.TabIndex = 8;
             // 
-            // groupBox3
+            // groupBox_hours
             // 
-            this.groupBox3.Controls.Add(this.hours_field);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.groupBox3.Location = new System.Drawing.Point(13, 119);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox3.Size = new System.Drawing.Size(233, 76);
-            this.groupBox3.TabIndex = 33;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Hours";
+            this.groupBox_hours.Controls.Add(this.hours_field);
+            this.groupBox_hours.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
+            this.groupBox_hours.Location = new System.Drawing.Point(13, 119);
+            this.groupBox_hours.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.groupBox_hours.Name = "groupBox_hours";
+            this.groupBox_hours.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.groupBox_hours.Size = new System.Drawing.Size(233, 76);
+            this.groupBox_hours.TabIndex = 33;
+            this.groupBox_hours.TabStop = false;
+            this.groupBox_hours.Text = "Hours";
             // 
             // hours_field
             // 
@@ -153,8 +153,8 @@
             this.ClientSize = new System.Drawing.Size(519, 249);
             this.Controls.Add(this.checkBox_disbale_idle_when_timer_on);
             this.Controls.Add(this.radioButton_lock_workspace);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
+            this.Controls.Add(this.groupBox_minutes);
+            this.Controls.Add(this.groupBox_hours);
             this.Controls.Add(this.radioButton_close_computer);
             this.Controls.Add(this.save_btn);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
@@ -167,9 +167,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Power Manager | Advanced Settings PC idle Advanced Settings";
             this.Load += new System.EventHandler(this.SettingsAdvancedPcIdleForm_Load);
-            this.groupBox4.ResumeLayout(false);
+            this.groupBox_minutes.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.minutes_field)).EndInit();
-            this.groupBox3.ResumeLayout(false);
+            this.groupBox_hours.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.hours_field)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -180,9 +180,9 @@
         private System.Windows.Forms.Button save_btn;
         private System.Windows.Forms.CheckBox checkBox_disbale_idle_when_timer_on;
         private System.Windows.Forms.RadioButton radioButton_lock_workspace;
-        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.GroupBox groupBox_minutes;
         private System.Windows.Forms.NumericUpDown minutes_field;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox_hours;
         private System.Windows.Forms.NumericUpDown hours_field;
         private System.Windows.Forms.RadioButton radioButton_close_computer;
     }

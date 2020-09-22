@@ -1,13 +1,6 @@
 ﻿using PowerManager.Controllers;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PowerManager.Forms
@@ -37,6 +30,7 @@ namespace PowerManager.Forms
 
         private void ClosingAlertForm_Load(object sender, EventArgs e)
         {
+            Properties.Settings.Default.isClosing = true;
             label_time_remaing.Text = remainingTime.ToString() + " s";
             var action = Properties.Settings.Default.PcIdleReminderAction;
             if (action == 1)
@@ -50,10 +44,12 @@ namespace PowerManager.Forms
             timer.Interval = 1000;
             timer.Tick += Timer_Tick;
             timer.Start();
+            checkTheme();
         }
 
         private void Timer_Tick(object sender, EventArgs e)
         {
+
             
             remainingTime--;
             label_time_remaing.Text = remainingTime.ToString() + " s";
@@ -70,26 +66,22 @@ namespace PowerManager.Forms
             if (remainingTime < 0)
             {
                 timer.Stop();
-
                 label_time_remaing.Visible = false;
-                label_press.Visible = false;
+                label_press.Text = "Close";
                 if (Properties.Settings.Default.PcIdleReminderAction == 1)
                 {
                     label_action.Text = "Computer Closed";
-                    ActionController.ShutdownComputer();
+                    ActionController.ShutdownComputer(this);
                     
                 }
                 else if (Properties.Settings.Default.PcIdleReminderAction == 2)
                 {
                     label_action.Text = "Computer Locked";
-                    ActionController.LockComputer();
+                    ActionController.LockComputer(this);
                     
                 }
+                
             }
-
-            
-
-
         }
 
         private void label_press_Click(object sender, EventArgs e)
@@ -99,6 +91,32 @@ namespace PowerManager.Forms
                 timer.Stop();
                 this.Close();
             }
+        }
+
+        private void ClosingAlertForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            timer.Stop();
+            Properties.Settings.Default.isClosing = false;
+        }
+
+        private void checkTheme()
+        {
+            Color textColor;
+            Color backColor;
+            if (Properties.Settings.Default.Theme == 0)
+            {
+                textColor = SystemColors.ControlText;
+                backColor = Color.White;
+                label_press.ForeColor = Color.Red;
+            }
+            else
+            {
+                textColor = SystemColors.ControlLightLight;
+                backColor = SystemColors.WindowFrame;
+                label_press.ForeColor = Color.Tomato;
+            }
+            this.ForeColor = textColor;
+            this.BackColor = backColor;
         }
     }
 }

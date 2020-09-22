@@ -29,5 +29,31 @@ namespace PowerManager.Forms.Utilities_Forms
         {
             returnedValue = inputText.Text;
         }
+
+        private void InputBoxForm_Load(object sender, EventArgs e)
+        {
+            checkTheme();
+        }
+        private void checkTheme()
+        {
+            Color textColor;
+            Color backColor;
+            if (Properties.Settings.Default.Theme == 0)
+            {
+                textColor = SystemColors.ControlText;
+                backColor = Color.White;
+            }
+            else
+            {
+                textColor = SystemColors.ControlLightLight;
+                backColor = SystemColors.WindowFrame;
+            }
+            this.ForeColor = textColor;
+            this.BackColor = backColor;
+            inputText.ForeColor = textColor;
+            inputText.BackColor = backColor;
+            btn_ok.ForeColor = SystemColors.ControlText;
+            btnCancel.ForeColor = SystemColors.ControlText;
+        }
     }
 }

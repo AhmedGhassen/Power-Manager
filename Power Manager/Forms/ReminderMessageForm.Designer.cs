@@ -57,7 +57,7 @@
             this.label_diplay_message.Text = "00 : 00 : 00";
             this.label_diplay_message.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // ReminderMessage
+            // ReminderMessageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -68,10 +68,10 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ReminderMessage";
+            this.Name = "ReminderMessageForm";
             this.Text = "Reminder Message";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.ReminderMessage_Load);

@@ -1,15 +1,7 @@
 ﻿using PowerManager.Controllers;
-using PowerManager.Forms;
-using PowerManager.Forms.Utilities_Forms;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 namespace PowerManager.Forms
 {
@@ -43,7 +35,6 @@ namespace PowerManager.Forms
 
             timerWhenPcIdle.Interval = 1000;
             timerWhenPcIdle.Tick += TimerWhenPcIdle_Tick;
-
 
         }
 
@@ -120,7 +111,7 @@ namespace PowerManager.Forms
                 timeLeftLabel.Text = String.Format("{0:00}", hours) + " : " + String.Format("{0:00}", minutes) + " : 00";
                 display_groupe_box.Visible = true;
                 timer_groupe_box.Visible = false;
-                pause_btn.Image = Properties.Resources.pause;
+                //pause_btn.Image = Properties.Resources;
                 timerStoped = false;
                 reminderAllSeconds = Properties.Settings.Default.MainTimerReminderTimeInSeconds;
                 refreshReminderDisplay();
@@ -129,6 +120,14 @@ namespace PowerManager.Forms
                 if (Properties.Settings.Default.DisableIdleWhenTimerRunning)
                 {
                     stopIdleTimer();
+                }
+                if (Properties.Settings.Default.Theme == 0)
+                {
+                    pause_btn.Image = Properties.Resources.light_pause;
+                }
+                else
+                {
+                    pause_btn.Image = Properties.Resources.dark_pause;
                 }
             }
         }
@@ -140,6 +139,7 @@ namespace PowerManager.Forms
             {
                 stopIdleTimer();
             }
+            
         }
 
         private void stop_btn_Click(object sender, EventArgs e)
@@ -215,14 +215,28 @@ namespace PowerManager.Forms
             if (timer.Enabled)
             {
                 timer.Stop();
-                pause_btn.Image = Properties.Resources.play;
+                if (Properties.Settings.Default.Theme == 0)
+                {
+                    pause_btn.Image = Properties.Resources.light_play;
+                } else
+                {
+                    pause_btn.Image = Properties.Resources.dark_play;
+                }
+  
                 notifyIcon1.Text = "Paused | " + this.time;
                 pauseToolStripMenuItem.Text = "Resume";
             }
             else
             {
                 timer.Start();
-                pause_btn.Image = Properties.Resources.pause;
+                if (Properties.Settings.Default.Theme == 0)
+                {
+                    pause_btn.Image = Properties.Resources.light_pause;
+                }
+                else
+                {
+                    pause_btn.Image = Properties.Resources.dark_pause;
+                }
                 pauseToolStripMenuItem.Text = "Pause";
 
             }
@@ -245,12 +259,14 @@ namespace PowerManager.Forms
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (settingsForm == null)
+            if (!Properties.Settings.Default.isClosing)
             {
-                settingsForm = new SettingsForm();
-                settingsForm.ShowDialog();
-                //if (settingsForm.DialogResult == DialogResult.OK)
-                //{
+                if (settingsForm == null)
+                {
+                    settingsForm = new SettingsForm();
+                    settingsForm.ShowDialog();
+                    //if (settingsForm.DialogResult == DialogResult.OK)
+                    //{
                     if (Properties.Settings.Default.PcIdleReminderEnabled)
                     {
                         if (!timerWhenPcIdle.Enabled)
@@ -268,14 +284,16 @@ namespace PowerManager.Forms
                         stopIdleTimer();
                     }
 
-                //}
-                checkDevelopperMode();
-                settingsForm = null;
+                    //}
+                    checkDevelopperMode();
+                    settingsForm = null;
+                }
+                else
+                {
+                    settingsForm.Focus();
+                }
             }
-            else
-            {
-                settingsForm.Focus();
-            }
+            
         }
 
         private void refreshReminderDisplay()
@@ -291,6 +309,7 @@ namespace PowerManager.Forms
 
         private void Form1_Load(object sender, EventArgs e)
         {
+           
             checkDevelopperMode();
             reminderRemainingTime = Properties.Settings.Default.MainTimerReminderTimeInSeconds;
             refreshReminderDisplay();
@@ -298,32 +317,60 @@ namespace PowerManager.Forms
             {
                 timerWhenPcIdle.Start();
             }
+            if (Properties.Settings.Default.Theme ==0)
+            {
+                darkToolStripMenuItem.Checked = false;
+                lightDefaultToolStripMenuItem.Checked = true;
+
+            } else
+            {
+                darkToolStripMenuItem.Checked = true;
+                lightDefaultToolStripMenuItem.Checked = false;
+            }
+            checkTheme();
+            
         }
 
         private void lockWorkstationToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ActionController.LockComputer();
+            if (!Properties.Settings.Default.isClosing)
+            {
+                this.Hide();
+                var oldAction = Properties.Settings.Default.PcIdleReminderAction;
+                var oldWarning = Properties.Settings.Default.Show1MnWarning;
+                Properties.Settings.Default.PcIdleReminderAction = 2;
+                Properties.Settings.Default.Show1MnWarning = false;
+                ClosingAlertForm closingAlertForm = new ClosingAlertForm(false);
+                closingAlertForm.ShowDialog();
+                Properties.Settings.Default.Show1MnWarning = oldWarning;
+                Properties.Settings.Default.PcIdleReminderAction = oldAction;
+                this.Show();
+            }
         }
 
         private void reminderToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (reminderForm == null)
+            if (!Properties.Settings.Default.isClosing)
             {
-                reminderForm = new ReminderForm();
-                reminderForm.ShowDialog();
-                if (reminderForm.DialogResult == DialogResult.OK)
+                if (reminderForm == null)
                 {
-                    reminderAllSeconds = Properties.Settings.Default.MainTimerReminderTimeInSeconds;
-                    refreshReminderDisplay();
+                    reminderForm = new ReminderForm();
+                    reminderForm.ShowDialog();
+                    if (reminderForm.DialogResult == DialogResult.OK)
+                    {
+                        reminderAllSeconds = Properties.Settings.Default.MainTimerReminderTimeInSeconds;
+                        refreshReminderDisplay();
+
+                    }
+                    reminderForm = null;
 
                 }
-                reminderForm = null;
-
+                else
+                {
+                    reminderForm.Focus();
+                }
             }
-            else
-            {
-                reminderForm.Focus();
-            }
+            
         }
 
         private void Form1_Shown(object sender, EventArgs e)
@@ -336,16 +383,20 @@ namespace PowerManager.Forms
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (aboutForm == null)
+            if (!Properties.Settings.Default.isClosing)
             {
-                aboutForm = new AboutForm();
-                aboutForm.ShowDialog();
-                aboutForm = null;
+                if (aboutForm == null)
+                {
+                    aboutForm = new AboutForm();
+                    aboutForm.ShowDialog();
+                    aboutForm = null;
+                }
+                else
+                {
+                    aboutForm.Focus();
+                }
             }
-            else
-            {
-                aboutForm.Focus();
-            }
+            
         }
         private void checkDevelopperMode()
         {
@@ -359,5 +410,67 @@ namespace PowerManager.Forms
             }
         }
 
+        private void darkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Theme = 1;
+            darkToolStripMenuItem.Checked = true;
+            lightDefaultToolStripMenuItem.Checked = false;
+            checkTheme();
+            
+            Properties.Settings.Default.Save();
+        }
+        private void lightDefaultToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.Theme = 0;
+            darkToolStripMenuItem.Checked = false;
+            lightDefaultToolStripMenuItem.Checked = true;
+            checkTheme();
+            
+            Properties.Settings.Default.Save();
+        }
+
+        private void checkTheme()
+        {
+            Color textColor;
+            Color backColor;
+            if (Properties.Settings.Default.Theme == 0)
+            {
+                textColor = SystemColors.ControlText;
+                backColor = Color.White;
+                play_btn.Image = Properties.Resources.light_play;
+                if (timer.Enabled)
+                {
+                    pause_btn.Image = Properties.Resources.light_pause;
+                } else
+                {
+                    pause_btn.Image = Properties.Resources.light_play;
+                }
+                stop_btn.Image = Properties.Resources.light_stop;
+            } else
+            {
+                backColor = SystemColors.WindowFrame;
+                textColor = SystemColors.ControlLightLight;
+                play_btn.Image = Properties.Resources.dark_play;
+                pause_btn.Image = Properties.Resources.dark_pause;
+                if (timer.Enabled)
+                {
+                    pause_btn.Image = Properties.Resources.dark_pause;
+                }
+                else
+                {
+                    pause_btn.Image = Properties.Resources.dark_play;
+                }
+                stop_btn.Image = Properties.Resources.dark_stop;
+            }
+            timeLeftLabel.ForeColor = textColor;
+            hours_groupe_box.ForeColor = textColor;
+            minutes_groupe_box.ForeColor = textColor;
+            hours_field.ForeColor = textColor;
+            hours_field.BackColor = backColor;
+            minutes_field.ForeColor = textColor;
+            minutes_field.BackColor = backColor;
+            this.BackColor = backColor;
+            
+        }
     }
 }

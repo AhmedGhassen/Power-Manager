@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PowerManager.Forms
@@ -20,6 +14,24 @@ namespace PowerManager.Forms
         private void AboutForm_Load(object sender, EventArgs e)
         {
             label1.Text = Application.ProductName+" : " +Application.ProductVersion+" Beta\nCopyright © 2020 By 'AGS Inc'";
+            checkTheme();
+        }
+        private void checkTheme()
+        {
+            Color textColor;
+            Color backColor;
+            if (Properties.Settings.Default.Theme == 0)
+            {
+                textColor = SystemColors.ControlText;
+                backColor = Color.White;
+            }
+            else
+            {
+                textColor = SystemColors.ControlLightLight;
+                backColor = SystemColors.WindowFrame;
+            }
+            this.ForeColor = textColor;
+            this.BackColor = backColor;
         }
     }
 }

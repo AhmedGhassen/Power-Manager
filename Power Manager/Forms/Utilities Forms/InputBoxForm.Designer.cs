@@ -93,6 +93,7 @@
             this.Name = "InputBoxForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "title";
+            this.Load += new System.EventHandler(this.InputBoxForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

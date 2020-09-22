@@ -139,18 +139,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -163,9 +163,15 @@
   <ItemGroup>
     <Content Include="icon.ico" />
     <Content Include="Images\about.png" />
+    <None Include="Images\dark_pause.png" />
+    <None Include="Images\dark_play.png" />
+    <None Include="Images\dark_stop.png" />
     <Content Include="Images\exit.png" />
     <Content Include="Images\icon.ico" />
     <Content Include="Images\icon.png" />
+    <None Include="Images\light_pause.png" />
+    <None Include="Images\light_play.png" />
+    <None Include="Images\light_stop.png" />
     <Content Include="Images\lock.png" />
     <Content Include="Images\pause.png" />
     <Content Include="Images\play.png" />
@@ -174,6 +180,12 @@
     <Content Include="Images\stop.png" />
     <Content Include="Images\timer.png" />
     <Content Include="Images\update.png" />
+    <None Include="Resources\light_play.png" />
+    <None Include="Resources\light_pause.png" />
+    <None Include="Resources\dark_stop.png" />
+    <None Include="Resources\dark_play.png" />
+    <None Include="Resources\dark_pause.png" />
+    <None Include="Resources\light_stop.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Power_API\Power_API.csproj">
@@ -182,4 +194,8 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

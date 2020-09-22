@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace PowerManager.Forms.Settings_Advanced
@@ -25,6 +20,7 @@ namespace PowerManager.Forms.Settings_Advanced
             var allSeconds = TimeSpan.FromSeconds(double.Parse(Properties.Settings.Default.PcIdleReminderTimeInSeconds.ToString()));
             hours_field.Value = allSeconds.Hours;
             minutes_field.Value = allSeconds.Minutes;
+            checkTheme();
         }
 
         private void save_btn_Click(object sender, EventArgs e)
@@ -46,6 +42,30 @@ namespace PowerManager.Forms.Settings_Advanced
                 this.Close();
             }
             
+        }
+        private void checkTheme()
+        {
+            Color textColor;
+            Color backColor;
+            if (Properties.Settings.Default.Theme == 0)
+            {
+                textColor = SystemColors.ControlText;
+                backColor = Color.White;
+            }
+            else
+            {
+                textColor = SystemColors.ControlLightLight;
+                backColor = SystemColors.WindowFrame;
+            }
+            this.ForeColor = textColor;
+            this.BackColor = backColor;
+            groupBox_hours.ForeColor = textColor;
+            groupBox_minutes.ForeColor = textColor;
+            hours_field.ForeColor = textColor;
+            hours_field.BackColor = backColor;
+            minutes_field.ForeColor = textColor;
+            minutes_field.BackColor = backColor;
+            save_btn.ForeColor = SystemColors.ControlText;
         }
     }
 }

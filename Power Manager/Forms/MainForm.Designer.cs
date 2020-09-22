@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.timer_groupe_box = new System.Windows.Forms.GroupBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.minutes_groupe_box = new System.Windows.Forms.GroupBox();
             this.minutes_field = new System.Windows.Forms.NumericUpDown();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.hours_groupe_box = new System.Windows.Forms.GroupBox();
             this.hours_field = new System.Windows.Forms.NumericUpDown();
             this.play_btn = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -44,6 +44,9 @@
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.themeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lightDefaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timeLeftLabel = new System.Windows.Forms.Label();
@@ -70,9 +73,9 @@
             this.toolStripStatusLabel_reminder_timer = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel_idle_timer = new System.Windows.Forms.ToolStripStatusLabel();
             this.timer_groupe_box.SuspendLayout();
-            this.groupBox4.SuspendLayout();
+            this.minutes_groupe_box.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minutes_field)).BeginInit();
-            this.groupBox3.SuspendLayout();
+            this.hours_groupe_box.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.hours_field)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.play_btn)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -85,8 +88,8 @@
             // 
             // timer_groupe_box
             // 
-            this.timer_groupe_box.Controls.Add(this.groupBox4);
-            this.timer_groupe_box.Controls.Add(this.groupBox3);
+            this.timer_groupe_box.Controls.Add(this.minutes_groupe_box);
+            this.timer_groupe_box.Controls.Add(this.hours_groupe_box);
             this.timer_groupe_box.Controls.Add(this.play_btn);
             this.timer_groupe_box.Location = new System.Drawing.Point(13, 42);
             this.timer_groupe_box.Margin = new System.Windows.Forms.Padding(4);
@@ -96,15 +99,15 @@
             this.timer_groupe_box.TabIndex = 3;
             this.timer_groupe_box.TabStop = false;
             // 
-            // groupBox4
+            // minutes_groupe_box
             // 
-            this.groupBox4.Controls.Add(this.minutes_field);
-            this.groupBox4.Location = new System.Drawing.Point(230, 31);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(165, 101);
-            this.groupBox4.TabIndex = 14;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Minutes";
+            this.minutes_groupe_box.Controls.Add(this.minutes_field);
+            this.minutes_groupe_box.Location = new System.Drawing.Point(230, 31);
+            this.minutes_groupe_box.Name = "minutes_groupe_box";
+            this.minutes_groupe_box.Size = new System.Drawing.Size(165, 101);
+            this.minutes_groupe_box.TabIndex = 14;
+            this.minutes_groupe_box.TabStop = false;
+            this.minutes_groupe_box.Text = "Minutes";
             // 
             // minutes_field
             // 
@@ -120,15 +123,15 @@
             this.minutes_field.Size = new System.Drawing.Size(126, 31);
             this.minutes_field.TabIndex = 8;
             // 
-            // groupBox3
+            // hours_groupe_box
             // 
-            this.groupBox3.Controls.Add(this.hours_field);
-            this.groupBox3.Location = new System.Drawing.Point(16, 31);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(165, 101);
-            this.groupBox3.TabIndex = 13;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Hours";
+            this.hours_groupe_box.Controls.Add(this.hours_field);
+            this.hours_groupe_box.Location = new System.Drawing.Point(16, 31);
+            this.hours_groupe_box.Name = "hours_groupe_box";
+            this.hours_groupe_box.Size = new System.Drawing.Size(165, 101);
+            this.hours_groupe_box.TabIndex = 13;
+            this.hours_groupe_box.TabStop = false;
+            this.hours_groupe_box.Text = "Hours";
             // 
             // hours_field
             // 
@@ -146,7 +149,7 @@
             // 
             // play_btn
             // 
-            this.play_btn.Image = global::PowerManager.Properties.Resources.play;
+            this.play_btn.Image = ((System.Drawing.Image)(resources.GetObject("play_btn.Image")));
             this.play_btn.Location = new System.Drawing.Point(481, 40);
             this.play_btn.Name = "play_btn";
             this.play_btn.Size = new System.Drawing.Size(85, 85);
@@ -160,6 +163,7 @@
             this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolsToolStripMenuItem,
+            this.themeToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
@@ -184,20 +188,20 @@
             // 
             this.lockWorkstationToolStripMenuItem.Image = global::PowerManager.Properties.Resources._lock;
             this.lockWorkstationToolStripMenuItem.Name = "lockWorkstationToolStripMenuItem";
-            this.lockWorkstationToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.lockWorkstationToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
             this.lockWorkstationToolStripMenuItem.Text = "Lock Computer";
             this.lockWorkstationToolStripMenuItem.Click += new System.EventHandler(this.lockWorkstationToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
             // 
             // reminderToolStripMenuItem
             // 
             this.reminderToolStripMenuItem.Image = global::PowerManager.Properties.Resources.reminder;
             this.reminderToolStripMenuItem.Name = "reminderToolStripMenuItem";
-            this.reminderToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.reminderToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
             this.reminderToolStripMenuItem.Text = "Reminder";
             this.reminderToolStripMenuItem.Click += new System.EventHandler(this.reminderToolStripMenuItem_Click);
             // 
@@ -205,22 +209,45 @@
             // 
             this.optionsToolStripMenuItem.Image = global::PowerManager.Properties.Resources.settings;
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
             this.optionsToolStripMenuItem.Text = "Settings";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(169, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Image = global::PowerManager.Properties.Resources.exit;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
+            // 
+            // themeToolStripMenuItem
+            // 
+            this.themeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lightDefaultToolStripMenuItem,
+            this.darkToolStripMenuItem});
+            this.themeToolStripMenuItem.Name = "themeToolStripMenuItem";
+            this.themeToolStripMenuItem.Size = new System.Drawing.Size(62, 23);
+            this.themeToolStripMenuItem.Text = "Theme";
+            // 
+            // lightDefaultToolStripMenuItem
+            // 
+            this.lightDefaultToolStripMenuItem.Name = "lightDefaultToolStripMenuItem";
+            this.lightDefaultToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.lightDefaultToolStripMenuItem.Text = "Light (Default)";
+            this.lightDefaultToolStripMenuItem.Click += new System.EventHandler(this.lightDefaultToolStripMenuItem_Click);
+            // 
+            // darkToolStripMenuItem
+            // 
+            this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
+            this.darkToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.darkToolStripMenuItem.Text = "Dark";
+            this.darkToolStripMenuItem.Click += new System.EventHandler(this.darkToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
@@ -234,7 +261,7 @@
             // 
             this.aboutToolStripMenuItem.Image = global::PowerManager.Properties.Resources.about;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(116, 24);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -263,7 +290,7 @@
             // 
             // stop_btn
             // 
-            this.stop_btn.Image = global::PowerManager.Properties.Resources.stop;
+            this.stop_btn.Image = ((System.Drawing.Image)(resources.GetObject("stop_btn.Image")));
             this.stop_btn.Location = new System.Drawing.Point(544, 40);
             this.stop_btn.Name = "stop_btn";
             this.stop_btn.Size = new System.Drawing.Size(85, 85);
@@ -274,7 +301,7 @@
             // 
             // pause_btn
             // 
-            this.pause_btn.Image = global::PowerManager.Properties.Resources.pause;
+            this.pause_btn.Image = ((System.Drawing.Image)(resources.GetObject("pause_btn.Image")));
             this.pause_btn.Location = new System.Drawing.Point(429, 40);
             this.pause_btn.Name = "pause_btn";
             this.pause_btn.Size = new System.Drawing.Size(85, 85);
@@ -306,7 +333,7 @@
             this.aboutToolStripMenuItem1,
             this.exitToolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 166);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(181, 188);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // timerToolStripMenuItem
@@ -316,7 +343,7 @@
             this.stopToolStripMenuItem});
             this.timerToolStripMenuItem.Image = global::PowerManager.Properties.Resources.timer;
             this.timerToolStripMenuItem.Name = "timerToolStripMenuItem";
-            this.timerToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
+            this.timerToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.timerToolStripMenuItem.Text = "Timer";
             // 
             // pauseToolStripMenuItem
@@ -336,13 +363,13 @@
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
             // 
             // optionsToolStripMenuItem1
             // 
             this.optionsToolStripMenuItem1.Image = global::PowerManager.Properties.Resources.settings;
             this.optionsToolStripMenuItem1.Name = "optionsToolStripMenuItem1";
-            this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(172, 24);
+            this.optionsToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
             this.optionsToolStripMenuItem1.Text = "Settings";
             this.optionsToolStripMenuItem1.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
@@ -350,40 +377,40 @@
             // 
             this.reminderToolStripMenuItem1.Image = global::PowerManager.Properties.Resources.reminder;
             this.reminderToolStripMenuItem1.Name = "reminderToolStripMenuItem1";
-            this.reminderToolStripMenuItem1.Size = new System.Drawing.Size(172, 24);
+            this.reminderToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
             this.reminderToolStripMenuItem1.Text = "Reminder";
             this.reminderToolStripMenuItem1.Click += new System.EventHandler(this.reminderToolStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
             this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator6.Size = new System.Drawing.Size(177, 6);
             // 
             // lockWorkstationToolStripMenuItem1
             // 
             this.lockWorkstationToolStripMenuItem1.Image = global::PowerManager.Properties.Resources._lock;
             this.lockWorkstationToolStripMenuItem1.Name = "lockWorkstationToolStripMenuItem1";
-            this.lockWorkstationToolStripMenuItem1.Size = new System.Drawing.Size(172, 24);
+            this.lockWorkstationToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
             this.lockWorkstationToolStripMenuItem1.Text = "Lock Computer";
             this.lockWorkstationToolStripMenuItem1.Click += new System.EventHandler(this.lockWorkstationToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(169, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
             // 
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Image = global::PowerManager.Properties.Resources.about;
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
-            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(172, 24);
+            this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
             this.aboutToolStripMenuItem1.Text = "About";
             // 
             // exitToolStripMenuItem1
             // 
             this.exitToolStripMenuItem1.Image = global::PowerManager.Properties.Resources.exit;
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(172, 24);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(180, 24);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -460,8 +487,8 @@
             this.ClientSize = new System.Drawing.Size(672, 223);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
-            this.Controls.Add(this.timer_groupe_box);
             this.Controls.Add(this.display_groupe_box);
+            this.Controls.Add(this.timer_groupe_box);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.25F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -475,9 +502,9 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Shown += new System.EventHandler(this.Form1_Shown);
             this.timer_groupe_box.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
+            this.minutes_groupe_box.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.minutes_field)).EndInit();
-            this.groupBox3.ResumeLayout(false);
+            this.hours_groupe_box.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.hours_field)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.play_btn)).EndInit();
             this.menuStrip1.ResumeLayout(false);
@@ -506,8 +533,8 @@
         private System.Windows.Forms.PictureBox pause_btn;
         private System.Windows.Forms.PictureBox stop_btn;
         private System.Windows.Forms.GroupBox display_groupe_box;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox minutes_groupe_box;
+        private System.Windows.Forms.GroupBox hours_groupe_box;
         private System.Windows.Forms.NumericUpDown hours_field;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
@@ -533,6 +560,9 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_test_close_mode;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel_test_lock_mode;
+        private System.Windows.Forms.ToolStripMenuItem themeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lightDefaultToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem darkToolStripMenuItem;
     }
 }
 

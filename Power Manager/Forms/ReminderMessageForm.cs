@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PowerManager.Forms
@@ -24,6 +18,29 @@ namespace PowerManager.Forms
             var timeRemaining = TimeSpan.FromSeconds(double.Parse(remainingTime.ToString()));
             var time = String.Format("{0:00}", timeRemaining.Hours) + " : " + String.Format("{0:00}", timeRemaining.Minutes) + " : " + String.Format("{0:00}", timeRemaining.Seconds);
             label_diplay_message.Text = time;
+            checkTheme();
+        }
+
+        private void checkTheme()
+        {
+            Color textColor;
+            Color backColor;
+            if (Properties.Settings.Default.Theme == 0)
+            {
+                textColor = SystemColors.ControlText;
+                backColor = Color.White;
+                label_diplay_message.ForeColor = Color.Red;
+            }
+            else
+            {
+                textColor = SystemColors.ControlLightLight;
+                backColor = SystemColors.WindowFrame;
+                label_diplay_message.ForeColor = Color.Tomato;
+            }
+            this.ForeColor = textColor;
+            this.BackColor = backColor;
+            labe1.ForeColor = textColor;
+
         }
 
     }

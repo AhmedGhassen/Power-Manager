@@ -1,16 +1,9 @@
-﻿using Microsoft.VisualBasic;
-using Microsoft.Win32;
+﻿using Microsoft.Win32;
 using PowerManager.Forms.Settings_Advanced;
 using PowerManager.Forms.Utilities_Forms;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Diagnostics;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PowerManager.Forms
@@ -35,6 +28,7 @@ namespace PowerManager.Forms
             checkBox_show_1mn_warning.Checked = Properties.Settings.Default.Show1MnWarning;
             linkLabel_advanced.Enabled = checkBox_pc_idle.Checked;
             linkLabel_advanced_dev_mode.Enabled = checkBox_dev_mode.Checked;
+            checkTheme();
         }
 
         private void checkBox_pc_idle_CheckedChanged(object sender, EventArgs e)
@@ -134,6 +128,7 @@ namespace PowerManager.Forms
                 }
                 catch (System.UnauthorizedAccessException error)
                 {
+                    Debug.WriteLine(error.Message);
                     checkBox_Startup.Checked = !checkBox_Startup.Checked;
                     MessageBox.Show(this,"Action blocked", "Power Manager | Settings | Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -167,6 +162,23 @@ namespace PowerManager.Forms
         {
             Properties.Settings.Default.Show1MnWarning = checkBox_show_1mn_warning.Checked;
             Properties.Settings.Default.Save();
+        }
+        private void checkTheme()
+        {
+            Color textColor;
+            Color backColor;
+            if (Properties.Settings.Default.Theme == 0)
+            {
+                textColor = SystemColors.ControlText;
+                backColor = Color.White;
+            }
+            else
+            {
+                textColor = SystemColors.ControlLightLight;
+                backColor = SystemColors.WindowFrame;
+            }
+            this.ForeColor = textColor;
+            this.BackColor = backColor;
         }
     }
 }

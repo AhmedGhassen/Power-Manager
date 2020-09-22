@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 
 namespace PowerManager.Forms.Settings_Advanced
@@ -22,6 +17,7 @@ namespace PowerManager.Forms.Settings_Advanced
             checkBox_idle_timer.Checked = Properties.Settings.Default.IdleTimerStatusInStatusBar;
             checkBox_mode_test_close.Checked = Properties.Settings.Default.ModeTestForClosePC;
             checkBox_mode_test_lock.Checked = Properties.Settings.Default.ModeTestForLockPc;
+            checkTheme();
         }
 
         private void checkBox_mode_test_Click(object sender, EventArgs e)
@@ -62,6 +58,23 @@ namespace PowerManager.Forms.Settings_Advanced
         {
             Properties.Settings.Default.IdleTimerStatusInStatusBar = checkBox_idle_timer.Checked;
             Properties.Settings.Default.Save();
+        }
+
+        private void checkTheme()
+        {
+            Color textColor;
+            Color backColor;
+            if (Properties.Settings.Default.Theme == 0)
+            {
+                textColor = SystemColors.ControlText;
+                backColor = Color.White;
+            }else
+            {
+                textColor = SystemColors.ControlLightLight;
+                backColor = SystemColors.WindowFrame;
+            }
+            this.ForeColor = textColor;
+            this.BackColor = backColor;
         }
     }
 }

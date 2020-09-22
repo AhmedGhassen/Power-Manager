@@ -111,6 +111,7 @@
             // 
             this.linkLabel_advanced.AutoSize = true;
             this.linkLabel_advanced.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.linkLabel_advanced.LinkColor = System.Drawing.Color.DodgerBlue;
             this.linkLabel_advanced.Location = new System.Drawing.Point(465, 161);
             this.linkLabel_advanced.Name = "linkLabel_advanced";
             this.linkLabel_advanced.Size = new System.Drawing.Size(72, 18);
@@ -123,6 +124,7 @@
             // 
             this.linkLabel_advanced_dev_mode.AutoSize = true;
             this.linkLabel_advanced_dev_mode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
+            this.linkLabel_advanced_dev_mode.LinkColor = System.Drawing.Color.DodgerBlue;
             this.linkLabel_advanced_dev_mode.Location = new System.Drawing.Point(465, 196);
             this.linkLabel_advanced_dev_mode.Name = "linkLabel_advanced_dev_mode";
             this.linkLabel_advanced_dev_mode.Size = new System.Drawing.Size(72, 18);
