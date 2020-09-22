@@ -14,11 +14,11 @@ namespace PowerManager.Forms
         
         private decimal reminingTimeInMainTimer;
         private bool timerStoped = true;
+        private decimal reminderAllSeconds;
 
         //Idle Timer
         private Timer timerWhenPcIdle = new Timer();
-        private decimal reminderAllSeconds;
-        private decimal reminderRemainingTime;
+        
 
         //Forms
         private SettingsForm settingsForm = null;
@@ -80,12 +80,12 @@ namespace PowerManager.Forms
         {
             if (Properties.Settings.Default.MainTimerReminderEnabled)
             {
-                if (reminingTimeInMainTimer - reminderRemainingTime >= 0)
+                if (reminingTimeInMainTimer - reminderAllSeconds >= 0)
                 {
                     refreshReminderDisplay();
                 }
 
-                if (reminingTimeInMainTimer - reminderRemainingTime == 0)
+                if (reminingTimeInMainTimer - reminderAllSeconds == 0)
                 {
                     ReminderMessageForm reminderMessage = new ReminderMessageForm(reminingTimeInMainTimer);
                     reminderMessage.Show();
@@ -115,7 +115,6 @@ namespace PowerManager.Forms
                 timerStoped = false;
                 reminderAllSeconds = Properties.Settings.Default.MainTimerReminderTimeInSeconds;
                 refreshReminderDisplay();
-                reminderRemainingTime = reminingTimeInMainTimer - reminderAllSeconds;
                 timer.Start();
                 if (Properties.Settings.Default.DisableIdleWhenTimerRunning)
                 {
@@ -145,12 +144,18 @@ namespace PowerManager.Forms
         private void stop_btn_Click(object sender, EventArgs e)
         {
             stopTimer();
-            reminderRemainingTime = Properties.Settings.Default.MainTimerReminderTimeInSeconds;
+            reminderAllSeconds = Properties.Settings.Default.MainTimerReminderTimeInSeconds;
             refreshReminderDisplay();
 
             if (Properties.Settings.Default.PcIdleReminderEnabled && Properties.Settings.Default.DisableIdleWhenTimerRunning)
             {
                 timerWhenPcIdle.Start();
+            }
+
+            if (Properties.Settings.Default.DisableReminderWhenMainTimerStops)
+            {
+                Properties.Settings.Default.MainTimerReminderEnabled = false;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -265,8 +270,6 @@ namespace PowerManager.Forms
                 {
                     settingsForm = new SettingsForm();
                     settingsForm.ShowDialog();
-                    //if (settingsForm.DialogResult == DialogResult.OK)
-                    //{
                     if (Properties.Settings.Default.PcIdleReminderEnabled)
                     {
                         if (!timerWhenPcIdle.Enabled)
@@ -298,9 +301,9 @@ namespace PowerManager.Forms
 
         private void refreshReminderDisplay()
         {
-            if (reminingTimeInMainTimer - reminderRemainingTime >= 0)
+            if (reminingTimeInMainTimer - reminderAllSeconds >= 0)
             {
-                var remainingTimeReminder = TimeSpan.FromSeconds(double.Parse((reminingTimeInMainTimer - reminderRemainingTime).ToString()));
+                var remainingTimeReminder = TimeSpan.FromSeconds(double.Parse((reminingTimeInMainTimer - reminderAllSeconds).ToString()));
                 toolStripStatusLabel_reminder_timer.Text = "Reminder Timer  " + String.Format("{0:00}", remainingTimeReminder.Hours) + " : " + String.Format("{0:00}", remainingTimeReminder.Minutes) + " : " + String.Format("{0:00}", remainingTimeReminder.Seconds);
 
             }
@@ -311,7 +314,7 @@ namespace PowerManager.Forms
         {
            
             checkDevelopperMode();
-            reminderRemainingTime = Properties.Settings.Default.MainTimerReminderTimeInSeconds;
+            reminderAllSeconds = Properties.Settings.Default.MainTimerReminderTimeInSeconds;
             refreshReminderDisplay();
             if (Properties.Settings.Default.PcIdleReminderEnabled)
             {

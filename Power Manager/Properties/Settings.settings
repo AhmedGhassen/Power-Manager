@@ -59,5 +59,8 @@
     <Setting Name="DarkThemeColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">64, 64, 64</Value>
     </Setting>
+    <Setting Name="DisableReminderWhenMainTimerStops" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

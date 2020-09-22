@@ -15,6 +15,7 @@ namespace PowerManager.Forms
         {
             checkBox_disable_reminder_after_on.Checked = Properties.Settings.Default.MainTimerReminderDisabledAfterGoinOn;
             checkBox_main_timer.Checked = Properties.Settings.Default.MainTimerReminderEnabled;
+            checkBox_stop_reminder_timer_stops.Checked = Properties.Settings.Default.DisableReminderWhenMainTimerStops;
             var mainTimerSeconds = TimeSpan.FromSeconds(double.Parse(Properties.Settings.Default.MainTimerReminderTimeInSeconds.ToString()));
             hours_field_main_timer.Value = mainTimerSeconds.Hours;
             minutes_field_main_timer.Value = mainTimerSeconds.Minutes;
@@ -26,6 +27,7 @@ namespace PowerManager.Forms
             hours_field_main_timer.Enabled = checkBox_main_timer.Checked;
             minutes_field_main_timer.Enabled = checkBox_main_timer.Checked;
             checkBox_disable_reminder_after_on.Enabled = checkBox_main_timer.Checked;
+            checkBox_stop_reminder_timer_stops.Enabled = checkBox_main_timer.Checked;
         }
 
 
@@ -44,6 +46,8 @@ namespace PowerManager.Forms
                 Properties.Settings.Default.MainTimerReminderTimeInSeconds = hours_field_main_timer.Value * 3600 + minutes_field_main_timer.Value * 60;
 
                 Properties.Settings.Default.MainTimerReminderDisabledAfterGoinOn = checkBox_disable_reminder_after_on.Checked;
+
+                Properties.Settings.Default.DisableReminderWhenMainTimerStops = checkBox_stop_reminder_timer_stops.Checked;
                 Properties.Settings.Default.Save();
                 this.Close();
             }

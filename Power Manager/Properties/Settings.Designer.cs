@@ -250,5 +250,17 @@ namespace PowerManager.Properties {
                 this["DarkThemeColor"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DisableReminderWhenMainTimerStops {
+            get {
+                return ((bool)(this["DisableReminderWhenMainTimerStops"]));
+            }
+            set {
+                this["DisableReminderWhenMainTimerStops"] = value;
+            }
+        }
     }
 }

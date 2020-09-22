@@ -37,6 +37,7 @@
             this.minutes_field_main_timer = new System.Windows.Forms.NumericUpDown();
             this.groupBox_hours = new System.Windows.Forms.GroupBox();
             this.hours_field_main_timer = new System.Windows.Forms.NumericUpDown();
+            this.checkBox_stop_reminder_timer_stops = new System.Windows.Forms.CheckBox();
             this.groupBox_minutes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minutes_field_main_timer)).BeginInit();
             this.groupBox_hours.SuspendLayout();
@@ -46,7 +47,7 @@
             // btn_save
             // 
             this.btn_save.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btn_save.Location = new System.Drawing.Point(291, 175);
+            this.btn_save.Location = new System.Drawing.Point(314, 221);
             this.btn_save.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(133, 37);
@@ -59,7 +60,7 @@
             // 
             this.label_ps.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.25F);
             this.label_ps.ForeColor = System.Drawing.Color.Red;
-            this.label_ps.Location = new System.Drawing.Point(11, 175);
+            this.label_ps.Location = new System.Drawing.Point(11, 221);
             this.label_ps.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_ps.Name = "label_ps";
             this.label_ps.Size = new System.Drawing.Size(277, 47);
@@ -95,11 +96,11 @@
             // 
             this.groupBox_minutes.Controls.Add(this.minutes_field_main_timer);
             this.groupBox_minutes.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.groupBox_minutes.Location = new System.Drawing.Point(226, 84);
+            this.groupBox_minutes.Location = new System.Drawing.Point(241, 130);
             this.groupBox_minutes.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox_minutes.Name = "groupBox_minutes";
             this.groupBox_minutes.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox_minutes.Size = new System.Drawing.Size(198, 76);
+            this.groupBox_minutes.Size = new System.Drawing.Size(207, 76);
             this.groupBox_minutes.TabIndex = 33;
             this.groupBox_minutes.TabStop = false;
             this.groupBox_minutes.Text = "Minutes";
@@ -108,7 +109,7 @@
             // 
             this.minutes_field_main_timer.Enabled = false;
             this.minutes_field_main_timer.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.minutes_field_main_timer.Location = new System.Drawing.Point(25, 31);
+            this.minutes_field_main_timer.Location = new System.Drawing.Point(30, 30);
             this.minutes_field_main_timer.Margin = new System.Windows.Forms.Padding(5);
             this.minutes_field_main_timer.Maximum = new decimal(new int[] {
             59,
@@ -123,11 +124,11 @@
             // 
             this.groupBox_hours.Controls.Add(this.hours_field_main_timer);
             this.groupBox_hours.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.groupBox_hours.Location = new System.Drawing.Point(13, 84);
+            this.groupBox_hours.Location = new System.Drawing.Point(13, 130);
             this.groupBox_hours.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox_hours.Name = "groupBox_hours";
             this.groupBox_hours.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox_hours.Size = new System.Drawing.Size(198, 76);
+            this.groupBox_hours.Size = new System.Drawing.Size(207, 76);
             this.groupBox_hours.TabIndex = 32;
             this.groupBox_hours.TabStop = false;
             this.groupBox_hours.Text = "Hours";
@@ -136,7 +137,7 @@
             // 
             this.hours_field_main_timer.Enabled = false;
             this.hours_field_main_timer.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.25F);
-            this.hours_field_main_timer.Location = new System.Drawing.Point(22, 31);
+            this.hours_field_main_timer.Location = new System.Drawing.Point(30, 30);
             this.hours_field_main_timer.Margin = new System.Windows.Forms.Padding(5);
             this.hours_field_main_timer.Maximum = new decimal(new int[] {
             23,
@@ -147,13 +148,26 @@
             this.hours_field_main_timer.Size = new System.Drawing.Size(151, 27);
             this.hours_field_main_timer.TabIndex = 12;
             // 
+            // checkBox_stop_reminder_timer_stops
+            // 
+            this.checkBox_stop_reminder_timer_stops.AutoSize = true;
+            this.checkBox_stop_reminder_timer_stops.Enabled = false;
+            this.checkBox_stop_reminder_timer_stops.Location = new System.Drawing.Point(14, 84);
+            this.checkBox_stop_reminder_timer_stops.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.checkBox_stop_reminder_timer_stops.Name = "checkBox_stop_reminder_timer_stops";
+            this.checkBox_stop_reminder_timer_stops.Size = new System.Drawing.Size(433, 29);
+            this.checkBox_stop_reminder_timer_stops.TabIndex = 35;
+            this.checkBox_stop_reminder_timer_stops.Text = "Diasble the reminder when the timer stops";
+            this.checkBox_stop_reminder_timer_stops.UseVisualStyleBackColor = true;
+            // 
             // ReminderForm
             // 
             this.AcceptButton = this.btn_save;
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(437, 240);
+            this.ClientSize = new System.Drawing.Size(456, 284);
+            this.Controls.Add(this.checkBox_stop_reminder_timer_stops);
             this.Controls.Add(this.checkBox_disable_reminder_after_on);
             this.Controls.Add(this.groupBox_minutes);
             this.Controls.Add(this.groupBox_hours);
@@ -188,5 +202,6 @@
         private System.Windows.Forms.NumericUpDown minutes_field_main_timer;
         private System.Windows.Forms.GroupBox groupBox_hours;
         private System.Windows.Forms.NumericUpDown hours_field_main_timer;
+        private System.Windows.Forms.CheckBox checkBox_stop_reminder_timer_stops;
     }
 }
