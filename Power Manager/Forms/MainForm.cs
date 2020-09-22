@@ -448,7 +448,7 @@ namespace PowerManager.Forms
                 stop_btn.Image = Properties.Resources.light_stop;
             } else
             {
-                backColor = SystemColors.WindowFrame;
+                backColor = Properties.Settings.Default.DarkThemeColor;
                 textColor = SystemColors.ControlLightLight;
                 play_btn.Image = Properties.Resources.dark_play;
                 pause_btn.Image = Properties.Resources.dark_pause;

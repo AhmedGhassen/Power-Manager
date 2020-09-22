@@ -112,7 +112,7 @@ namespace PowerManager.Forms
             else
             {
                 textColor = SystemColors.ControlLightLight;
-                backColor = SystemColors.WindowFrame;
+                backColor = Properties.Settings.Default.DarkThemeColor;
                 label_press.ForeColor = Color.Tomato;
             }
             this.ForeColor = textColor;

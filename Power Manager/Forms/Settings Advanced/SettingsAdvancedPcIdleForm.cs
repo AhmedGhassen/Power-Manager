@@ -55,7 +55,7 @@ namespace PowerManager.Forms.Settings_Advanced
             else
             {
                 textColor = SystemColors.ControlLightLight;
-                backColor = SystemColors.WindowFrame;
+                backColor = Properties.Settings.Default.DarkThemeColor;
             }
             this.ForeColor = textColor;
             this.BackColor = backColor;
