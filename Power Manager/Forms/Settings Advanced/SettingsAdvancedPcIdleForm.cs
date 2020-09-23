@@ -15,7 +15,7 @@ namespace PowerManager.Forms.Settings_Advanced
         {
             radioButton_close_computer.Checked = Properties.Settings.Default.PcIdleReminderAction == 1;
             radioButton_lock_workspace.Checked = Properties.Settings.Default.PcIdleReminderAction == 2;
-
+            checkBox_disable_cancel.Checked = Properties.Settings.Default.DisableIdleTimerWhenCancel;
             checkBox_disbale_idle_when_timer_on.Checked = Properties.Settings.Default.DisableIdleWhenTimerRunning;
             var allSeconds = TimeSpan.FromSeconds(double.Parse(Properties.Settings.Default.PcIdleReminderTimeInSeconds.ToString()));
             hours_field.Value = allSeconds.Hours;
@@ -27,10 +27,11 @@ namespace PowerManager.Forms.Settings_Advanced
         {
             if ((!radioButton_close_computer.Checked && !radioButton_lock_workspace.Checked) || (hours_field.Value == 0 && minutes_field.Value == 0))
             {
-                MessageBox.Show(this,"Some fields are empry", "Power Manager | Advanced Settings PC idle Advanced Settings | Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(this, "Some fields are empry", "Power Manager | Advanced Settings PC idle Advanced Settings | Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 DialogResult = DialogResult.None;
                 return;
-            } else
+            }
+            else
             {
                 if (radioButton_close_computer.Checked)
                     Properties.Settings.Default.PcIdleReminderAction = 1;
@@ -38,12 +39,13 @@ namespace PowerManager.Forms.Settings_Advanced
                     Properties.Settings.Default.PcIdleReminderAction = 2;
                 Properties.Settings.Default.PcIdleReminderTimeInSeconds = hours_field.Value * 3600 + minutes_field.Value * 60;
                 Properties.Settings.Default.DisableIdleWhenTimerRunning = checkBox_disbale_idle_when_timer_on.Checked;
+                Properties.Settings.Default.DisableIdleTimerWhenCancel = checkBox_disable_cancel.Checked;
                 Properties.Settings.Default.Save();
                 this.Close();
             }
-            
+
         }
-        private void checkTheme()
+        public void checkTheme()
         {
             Color textColor;
             Color backColor;
@@ -65,7 +67,8 @@ namespace PowerManager.Forms.Settings_Advanced
             hours_field.BackColor = backColor;
             minutes_field.ForeColor = textColor;
             minutes_field.BackColor = backColor;
-            save_btn.ForeColor = SystemColors.ControlText;
+            save_btn.ForeColor = textColor;
+            save_btn.BackColor = backColor;
         }
     }
 }

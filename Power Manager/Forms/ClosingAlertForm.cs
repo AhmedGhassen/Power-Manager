@@ -49,8 +49,6 @@ namespace PowerManager.Forms
 
         private void Timer_Tick(object sender, EventArgs e)
         {
-
-            
             remainingTime--;
             label_time_remaing.Text = remainingTime.ToString() + " s";
             if (isIdle)
@@ -58,6 +56,8 @@ namespace PowerManager.Forms
                 var idleTime = ActionController.GetComputeIdleTimeInSeconds();
                 if (idleTime == 0)
                 {
+                    Properties.Settings.Default.PcIdleReminderEnabled = false;
+                    Properties.Settings.Default.Save();
                     timer.Stop();
                     this.Close();
                 }
@@ -99,7 +99,7 @@ namespace PowerManager.Forms
             Properties.Settings.Default.isClosing = false;
         }
 
-        private void checkTheme()
+        public void checkTheme()
         {
             Color textColor;
             Color backColor;

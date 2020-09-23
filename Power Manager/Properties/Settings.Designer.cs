@@ -262,5 +262,29 @@ namespace PowerManager.Properties {
                 this["DisableReminderWhenMainTimerStops"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DisableIdleTimerWhenCancel {
+            get {
+                return ((bool)(this["DisableIdleTimerWhenCancel"]));
+            }
+            set {
+                this["DisableIdleTimerWhenCancel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool HideMainWhenClosingAlertCloses {
+            get {
+                return ((bool)(this["HideMainWhenClosingAlertCloses"]));
+            }
+            set {
+                this["HideMainWhenClosingAlertCloses"] = value;
+            }
+        }
     }
 }

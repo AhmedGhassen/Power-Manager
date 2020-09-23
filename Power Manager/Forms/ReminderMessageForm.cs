@@ -21,7 +21,7 @@ namespace PowerManager.Forms
             checkTheme();
         }
 
-        private void checkTheme()
+        public void checkTheme()
         {
             Color textColor;
             Color backColor;

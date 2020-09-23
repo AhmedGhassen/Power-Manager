@@ -54,6 +54,7 @@
             // btn_ok
             // 
             this.btn_ok.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btn_ok.FlatAppearance.BorderSize = 0;
             this.btn_ok.Location = new System.Drawing.Point(298, 97);
             this.btn_ok.Name = "btn_ok";
             this.btn_ok.Size = new System.Drawing.Size(92, 34);

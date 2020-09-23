@@ -72,6 +72,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ReminderMessageForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reminder Message";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.ReminderMessage_Load);

@@ -34,7 +34,7 @@ namespace PowerManager.Forms.Utilities_Forms
         {
             checkTheme();
         }
-        private void checkTheme()
+        public void checkTheme()
         {
             Color textColor;
             Color backColor;
@@ -52,8 +52,10 @@ namespace PowerManager.Forms.Utilities_Forms
             this.BackColor = backColor;
             inputText.ForeColor = textColor;
             inputText.BackColor = backColor;
-            btn_ok.ForeColor = SystemColors.ControlText;
-            btnCancel.ForeColor = SystemColors.ControlText;
+            btn_ok.ForeColor = textColor;
+            btnCancel.ForeColor = textColor;
+            btn_ok.BackColor = backColor;
+            btnCancel.BackColor = backColor;
         }
     }
 }

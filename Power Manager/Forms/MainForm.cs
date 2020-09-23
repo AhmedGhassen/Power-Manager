@@ -11,19 +11,21 @@ namespace PowerManager.Forms
         private Timer timer = new Timer();
         private decimal minutes;
         private decimal hours;
-        
+
         private decimal reminingTimeInMainTimer;
         private bool timerStoped = true;
         private decimal reminderAllSeconds;
 
         //Idle Timer
         private Timer timerWhenPcIdle = new Timer();
-        
+
 
         //Forms
         private SettingsForm settingsForm = null;
         private ReminderForm reminderForm = null;
         private AboutForm aboutForm = null;
+        private ClosingAlertForm closingAlertForm = null;
+        private ReminderMessageForm reminderMessage = null;
 
         private string time;
 
@@ -35,8 +37,8 @@ namespace PowerManager.Forms
 
             timerWhenPcIdle.Interval = 1000;
             timerWhenPcIdle.Tick += TimerWhenPcIdle_Tick;
-
         }
+
 
         private void TimerWhenPcIdle_Tick(object sender, EventArgs e)
         {
@@ -48,9 +50,18 @@ namespace PowerManager.Forms
             {
                 stopIdleTimer();
                 this.Hide();
-                ClosingAlertForm closingAlertForm = new ClosingAlertForm(true);
+                closingAlertForm = new ClosingAlertForm(true);
                 closingAlertForm.ShowDialog();
-                timerWhenPcIdle.Start();
+                closingAlertForm = null;
+                if (!Properties.Settings.Default.HideMainWhenClosingAlertCloses)
+                {
+                    this.Show();
+                }
+                if (Properties.Settings.Default.PcIdleReminderEnabled)
+                {
+                    timerWhenPcIdle.Start();
+                }
+
             }
         }
 
@@ -62,8 +73,13 @@ namespace PowerManager.Forms
                 stopTimer();
                 this.Hide();
                 Properties.Settings.Default.PcIdleReminderAction = 1;
-                ClosingAlertForm closingAlertForm = new ClosingAlertForm(false);
+                closingAlertForm = new ClosingAlertForm(false);
                 closingAlertForm.ShowDialog();
+                closingAlertForm = null;
+                if (!Properties.Settings.Default.HideMainWhenClosingAlertCloses)
+                {
+                    this.Show();
+                }
             }
             else
             {
@@ -87,8 +103,9 @@ namespace PowerManager.Forms
 
                 if (reminingTimeInMainTimer - reminderAllSeconds == 0)
                 {
-                    ReminderMessageForm reminderMessage = new ReminderMessageForm(reminingTimeInMainTimer);
-                    reminderMessage.Show();
+                    reminderMessage = new ReminderMessageForm(reminingTimeInMainTimer);
+                    reminderMessage.ShowDialog();
+                    reminderMessage = null;
                     if (Properties.Settings.Default.MainTimerReminderDisabledAfterGoinOn)
                     {
                         Properties.Settings.Default.MainTimerReminderEnabled = false;
@@ -111,7 +128,6 @@ namespace PowerManager.Forms
                 timeLeftLabel.Text = String.Format("{0:00}", hours) + " : " + String.Format("{0:00}", minutes) + " : 00";
                 display_groupe_box.Visible = true;
                 timer_groupe_box.Visible = false;
-                //pause_btn.Image = Properties.Resources;
                 timerStoped = false;
                 reminderAllSeconds = Properties.Settings.Default.MainTimerReminderTimeInSeconds;
                 refreshReminderDisplay();
@@ -138,13 +154,14 @@ namespace PowerManager.Forms
             {
                 stopIdleTimer();
             }
-            
+
         }
 
         private void stop_btn_Click(object sender, EventArgs e)
         {
             stopTimer();
-            reminderAllSeconds = Properties.Settings.Default.MainTimerReminderTimeInSeconds;
+            reminderAllSeconds = 0;
+            reminingTimeInMainTimer = 0;
             refreshReminderDisplay();
 
             if (Properties.Settings.Default.PcIdleReminderEnabled && Properties.Settings.Default.DisableIdleWhenTimerRunning)
@@ -171,7 +188,7 @@ namespace PowerManager.Forms
             {
                 this.Hide();
                 e.Cancel = true;
-                
+
             }
             else if (timer.Enabled || !timerStoped)
             {
@@ -223,11 +240,12 @@ namespace PowerManager.Forms
                 if (Properties.Settings.Default.Theme == 0)
                 {
                     pause_btn.Image = Properties.Resources.light_play;
-                } else
+                }
+                else
                 {
                     pause_btn.Image = Properties.Resources.dark_play;
                 }
-  
+
                 notifyIcon1.Text = "Paused | " + this.time;
                 pauseToolStripMenuItem.Text = "Resume";
             }
@@ -286,8 +304,6 @@ namespace PowerManager.Forms
                     {
                         stopIdleTimer();
                     }
-
-                    //}
                     checkDevelopperMode();
                     settingsForm = null;
                 }
@@ -296,7 +312,7 @@ namespace PowerManager.Forms
                     settingsForm.Focus();
                 }
             }
-            
+
         }
 
         private void refreshReminderDisplay()
@@ -312,27 +328,35 @@ namespace PowerManager.Forms
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
             checkDevelopperMode();
             reminderAllSeconds = Properties.Settings.Default.MainTimerReminderTimeInSeconds;
-            refreshReminderDisplay();
+
             if (Properties.Settings.Default.PcIdleReminderEnabled)
             {
                 timerWhenPcIdle.Start();
             }
-            if (Properties.Settings.Default.Theme ==0)
+            if (Properties.Settings.Default.Theme == 0)
             {
                 darkToolStripMenuItem.Checked = false;
                 lightDefaultToolStripMenuItem.Checked = true;
+                lightDefaultToolStripMenuItem1.Checked = true;
+                darkToolStripMenuItem1.Checked = false;
 
-            } else
+            }
+            else
             {
+                darkToolStripMenuItem1.Checked = true;
+
                 darkToolStripMenuItem.Checked = true;
                 lightDefaultToolStripMenuItem.Checked = false;
+                lightDefaultToolStripMenuItem1.Checked = false;
             }
             checkTheme();
-            
+
         }
+
+
+
 
         private void lockWorkstationToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -343,11 +367,15 @@ namespace PowerManager.Forms
                 var oldWarning = Properties.Settings.Default.Show1MnWarning;
                 Properties.Settings.Default.PcIdleReminderAction = 2;
                 Properties.Settings.Default.Show1MnWarning = false;
-                ClosingAlertForm closingAlertForm = new ClosingAlertForm(false);
+                closingAlertForm = new ClosingAlertForm(false);
                 closingAlertForm.ShowDialog();
+                closingAlertForm = null;
+                if (!Properties.Settings.Default.HideMainWhenClosingAlertCloses)
+                {
+                    this.Show();
+                }
                 Properties.Settings.Default.Show1MnWarning = oldWarning;
                 Properties.Settings.Default.PcIdleReminderAction = oldAction;
-                this.Show();
             }
         }
 
@@ -373,7 +401,7 @@ namespace PowerManager.Forms
                     reminderForm.Focus();
                 }
             }
-            
+
         }
 
         private void Form1_Shown(object sender, EventArgs e)
@@ -399,7 +427,7 @@ namespace PowerManager.Forms
                     aboutForm.Focus();
                 }
             }
-            
+
         }
         private void checkDevelopperMode()
         {
@@ -418,8 +446,9 @@ namespace PowerManager.Forms
             Properties.Settings.Default.Theme = 1;
             darkToolStripMenuItem.Checked = true;
             lightDefaultToolStripMenuItem.Checked = false;
+            darkToolStripMenuItem1.Checked = true;
+            lightDefaultToolStripMenuItem1.Checked = false;
             checkTheme();
-            
             Properties.Settings.Default.Save();
         }
         private void lightDefaultToolStripMenuItem_Click(object sender, EventArgs e)
@@ -427,13 +456,36 @@ namespace PowerManager.Forms
             Properties.Settings.Default.Theme = 0;
             darkToolStripMenuItem.Checked = false;
             lightDefaultToolStripMenuItem.Checked = true;
+            darkToolStripMenuItem1.Checked = false;
+            lightDefaultToolStripMenuItem1.Checked = true;
             checkTheme();
-            
             Properties.Settings.Default.Save();
         }
 
         private void checkTheme()
         {
+
+            if (reminderMessage != null)
+            {
+                reminderMessage.checkTheme();
+            }
+            if (closingAlertForm != null)
+            {
+                closingAlertForm.checkTheme();
+            }
+            if (settingsForm != null)
+            {
+                settingsForm.checkTheme();
+            }
+            if (reminderForm != null)
+            {
+                reminderForm.checkTheme();
+            }
+            if (aboutForm != null)
+            {
+                aboutForm.checkTheme();
+            }
+
             Color textColor;
             Color backColor;
             if (Properties.Settings.Default.Theme == 0)
@@ -444,12 +496,14 @@ namespace PowerManager.Forms
                 if (timer.Enabled)
                 {
                     pause_btn.Image = Properties.Resources.light_pause;
-                } else
+                }
+                else
                 {
                     pause_btn.Image = Properties.Resources.light_play;
                 }
                 stop_btn.Image = Properties.Resources.light_stop;
-            } else
+            }
+            else
             {
                 backColor = Properties.Settings.Default.DarkThemeColor;
                 textColor = SystemColors.ControlLightLight;
@@ -465,6 +519,8 @@ namespace PowerManager.Forms
                 }
                 stop_btn.Image = Properties.Resources.dark_stop;
             }
+            menuStrip1.ForeColor = textColor;
+            menuStrip1.BackColor = backColor;
             timeLeftLabel.ForeColor = textColor;
             hours_groupe_box.ForeColor = textColor;
             minutes_groupe_box.ForeColor = textColor;
@@ -473,7 +529,38 @@ namespace PowerManager.Forms
             minutes_field.ForeColor = textColor;
             minutes_field.BackColor = backColor;
             this.BackColor = backColor;
-            
+            statusStrip1.ForeColor = textColor;
+            statusStrip1.BackColor = backColor;
+            for (var i = 0; i < menuStrip1.Items.Count; i++)
+            {
+                menuStrip1.Items[i].ForeColor = textColor;
+                menuStrip1.Items[i].BackColor = backColor;
+            }
+
+        }
+
+        private void menuStrip1_MenuActivate(object sender, EventArgs e)
+        {
+            for (var i = 0; i < menuStrip1.Items.Count; i++)
+            {
+                if (Properties.Settings.Default.Theme == 1)
+                {
+                    menuStrip1.Items[i].ForeColor = SystemColors.ControlText;
+                    menuStrip1.Items[i].BackColor = Color.White;
+                }
+            }
+        }
+
+        private void menuStrip1_MenuDeactivate(object sender, EventArgs e)
+        {
+            for (var i = 0; i < menuStrip1.Items.Count; i++)
+            {
+                if (Properties.Settings.Default.Theme == 1)
+                {
+                    menuStrip1.Items[i].ForeColor = SystemColors.ControlLightLight;
+                    menuStrip1.Items[i].BackColor = Properties.Settings.Default.DarkThemeColor;
+                }
+            }
         }
     }
 }

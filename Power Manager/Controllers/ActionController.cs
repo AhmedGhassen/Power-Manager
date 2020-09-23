@@ -9,7 +9,7 @@ namespace PowerManager.Controllers
         {
             if( Properties.Settings.Default.ModeDev && Properties.Settings.Default.ModeTestForClosePC)
             {
-                MessageBox.Show(form,"'Closing Computer' feature has been disactivated for testing perposes", "Power Manager | Developer Mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(form,"'Close Computer' feature has been disactivated for testing perposes", "Power Manager | Developer Mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
             } else
             {
                 Power_Functions.ShutdownComputer();

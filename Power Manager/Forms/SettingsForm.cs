@@ -13,6 +13,7 @@ namespace PowerManager.Forms
 
         SettingsAdvancedPcIdleForm settingsAdvancedPcIdle = null;
         SettingsAdvancedDevModeForm SettingsAdvancedDev = null;
+        InputBoxForm inputBoxForm = null;
         public SettingsForm()
         {
             InitializeComponent();
@@ -26,6 +27,7 @@ namespace PowerManager.Forms
             checkBox_dev_mode.Checked = Properties.Settings.Default.ModeDev;
             checkBox_pc_idle.Checked = Properties.Settings.Default.PcIdleReminderEnabled;
             checkBox_show_1mn_warning.Checked = Properties.Settings.Default.Show1MnWarning;
+            checkBox_hide_main_alet_close.Checked = Properties.Settings.Default.HideMainWhenClosingAlertCloses;
             linkLabel_advanced.Enabled = checkBox_pc_idle.Checked;
             linkLabel_advanced_dev_mode.Enabled = checkBox_dev_mode.Checked;
             checkTheme();
@@ -65,10 +67,12 @@ namespace PowerManager.Forms
         {
             if (checkBox_dev_mode.Checked)
             {
-                InputBoxForm inputBoxForm = new InputBoxForm("Developper Mode", "Please enter the Devepoler Mode password", "", true);
+                inputBoxForm = new InputBoxForm("Developper Mode", "Please enter the Devepoler Mode password", "", true);
                 inputBoxForm.ShowDialog();
                 var password = inputBoxForm.returnedValue;
-                if (inputBoxForm.DialogResult == DialogResult.OK)
+                DialogResult dialogResult = inputBoxForm.DialogResult;
+                inputBoxForm = null;
+                if (dialogResult == DialogResult.OK)
                 {
                     if (!password.Equals("0000"))
                     {
@@ -77,12 +81,12 @@ namespace PowerManager.Forms
                         {
                             checkBox_dev_mode_Click(checkBox_dev_mode, null);
                         }
-                        checkBox_dev_mode.Checked = !checkBox_dev_mode.Checked;
+                        checkBox_dev_mode.Checked = false;
                     }
                 }
                 else
                 {
-                    checkBox_dev_mode.Checked = !checkBox_dev_mode.Checked;
+                    checkBox_dev_mode.Checked = false;
                 }
             }
             linkLabel_advanced_dev_mode.Enabled = checkBox_dev_mode.Checked;
@@ -130,7 +134,7 @@ namespace PowerManager.Forms
                 {
                     Debug.WriteLine(error.Message);
                     checkBox_Startup.Checked = !checkBox_Startup.Checked;
-                    MessageBox.Show(this,"Action blocked", "Power Manager | Settings | Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this, "Action blocked", "Power Manager | Settings | Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
@@ -163,8 +167,20 @@ namespace PowerManager.Forms
             Properties.Settings.Default.Show1MnWarning = checkBox_show_1mn_warning.Checked;
             Properties.Settings.Default.Save();
         }
-        private void checkTheme()
+        public void checkTheme()
         {
+            if (inputBoxForm != null)
+            {
+                inputBoxForm.checkTheme();
+            }
+            if (settingsAdvancedPcIdle != null)
+            {
+                settingsAdvancedPcIdle.checkTheme();
+            }
+            if (SettingsAdvancedDev != null)
+            {
+                SettingsAdvancedDev.checkTheme();
+            }
             Color textColor;
             Color backColor;
             if (Properties.Settings.Default.Theme == 0)
@@ -175,10 +191,17 @@ namespace PowerManager.Forms
             else
             {
                 textColor = SystemColors.ControlLightLight;
-               backColor = Properties.Settings.Default.DarkThemeColor;
+                backColor = Properties.Settings.Default.DarkThemeColor;
             }
             this.ForeColor = textColor;
             this.BackColor = backColor;
+        }
+
+
+
+        private void checkBox_hide_main_alet_close_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.HideMainWhenClosingAlertCloses = checkBox_hide_main_alet_close.Checked;
         }
     }
 }

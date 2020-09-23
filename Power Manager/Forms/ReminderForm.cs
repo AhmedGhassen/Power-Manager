@@ -53,7 +53,7 @@ namespace PowerManager.Forms
             }
         }
 
-        private void checkTheme()
+        public void checkTheme()
         {
             Color textColor;
             Color backColor;
@@ -80,7 +80,8 @@ namespace PowerManager.Forms
             hours_field_main_timer.ForeColor = textColor;
             hours_field_main_timer.BackColor = backColor;
 
-            btn_save.ForeColor = SystemColors.ControlText;
+            btn_save.ForeColor = textColor;
+            btn_save.BackColor = backColor;
         }
     }
 }

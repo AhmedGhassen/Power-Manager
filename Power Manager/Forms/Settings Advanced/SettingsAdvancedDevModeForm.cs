@@ -60,7 +60,7 @@ namespace PowerManager.Forms.Settings_Advanced
             Properties.Settings.Default.Save();
         }
 
-        private void checkTheme()
+        public void checkTheme()
         {
             Color textColor;
             Color backColor;

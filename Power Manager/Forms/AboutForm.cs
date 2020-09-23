@@ -6,6 +6,7 @@ namespace PowerManager.Forms
 {
     public partial class AboutForm : Form
     {
+        string release = "Bêta";
         public AboutForm()
         {
             InitializeComponent();
@@ -13,10 +14,12 @@ namespace PowerManager.Forms
 
         private void AboutForm_Load(object sender, EventArgs e)
         {
-            label1.Text = Application.ProductName+" : " +Application.ProductVersion+" Beta\nCopyright © 2020 By 'AGS Inc'";
+            label_product.Text = Application.ProductName;
+            label_version.Text = "Version "+Application.ProductVersion + " " + release;
+            label_copyright.Text = "Copyright © 2020 By '" + Application.CompanyName+"'";
             checkTheme();
         }
-        private void checkTheme()
+        public void checkTheme()
         {
             Color textColor;
             Color backColor;
