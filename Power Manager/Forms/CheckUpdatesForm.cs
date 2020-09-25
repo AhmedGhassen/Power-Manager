@@ -81,7 +81,7 @@ namespace PowerManager.Forms
 
         private void btn_update_Click(object sender, EventArgs e)
         {
-            ProcessStartInfo sInfo = new ProcessStartInfo("https://powermanager.web.app/");
+            ProcessStartInfo sInfo = new ProcessStartInfo("https://powermanager-updates.web.app/");
             Process.Start(sInfo);
             
         }
