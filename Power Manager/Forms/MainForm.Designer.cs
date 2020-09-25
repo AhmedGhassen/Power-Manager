@@ -48,6 +48,10 @@
             this.lightDefaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.darkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sendRatingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.checkForUpdatesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timeLeftLabel = new System.Windows.Forms.Label();
             this.display_groupe_box = new System.Windows.Forms.GroupBox();
@@ -76,6 +80,7 @@
             this.toolStripStatusLabel_test_lock_mode = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel_reminder_timer = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel_idle_timer = new System.Windows.Forms.ToolStripStatusLabel();
+            this.checkForUpdatesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.timer_groupe_box.SuspendLayout();
             this.minutes_groupe_box.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.minutes_field)).BeginInit();
@@ -194,20 +199,20 @@
             // 
             this.lockWorkstationToolStripMenuItem.Image = global::PowerManager.Properties.Resources._lock;
             this.lockWorkstationToolStripMenuItem.Name = "lockWorkstationToolStripMenuItem";
-            this.lockWorkstationToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.lockWorkstationToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
             this.lockWorkstationToolStripMenuItem.Text = "Lock Computer";
             this.lockWorkstationToolStripMenuItem.Click += new System.EventHandler(this.lockWorkstationToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(169, 6);
             // 
             // reminderToolStripMenuItem
             // 
             this.reminderToolStripMenuItem.Image = global::PowerManager.Properties.Resources.reminder;
             this.reminderToolStripMenuItem.Name = "reminderToolStripMenuItem";
-            this.reminderToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.reminderToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
             this.reminderToolStripMenuItem.Text = "Reminder";
             this.reminderToolStripMenuItem.Click += new System.EventHandler(this.reminderToolStripMenuItem_Click);
             // 
@@ -215,18 +220,17 @@
             // 
             this.optionsToolStripMenuItem.Image = global::PowerManager.Properties.Resources.settings;
             this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(172, 24);
             this.optionsToolStripMenuItem.Text = "Settings";
             this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
-            this.toolStripSeparator7.Size = new System.Drawing.Size(177, 6);
+            this.toolStripSeparator7.Size = new System.Drawing.Size(169, 6);
             // 
             // exitToolStripMenuItem
             // 
-            this.exitToolStripMenuItem.Image = global::PowerManager.Properties.Resources.exit;
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
             this.exitToolStripMenuItem.Text = "Exit";
@@ -258,16 +262,45 @@
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sendRatingToolStripMenuItem,
+            this.toolStripSeparator3,
+            this.checkForUpdatesToolStripMenuItem,
+            this.toolStripSeparator8,
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(49, 23);
             this.helpToolStripMenuItem.Text = "Help";
             // 
+            // sendRatingToolStripMenuItem
+            // 
+            this.sendRatingToolStripMenuItem.Image = global::PowerManager.Properties.Resources.feedback;
+            this.sendRatingToolStripMenuItem.Name = "sendRatingToolStripMenuItem";
+            this.sendRatingToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
+            this.sendRatingToolStripMenuItem.Text = "Send Feedback";
+            this.sendRatingToolStripMenuItem.Click += new System.EventHandler(this.sendRatingToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(186, 6);
+            // 
+            // checkForUpdatesToolStripMenuItem
+            // 
+            this.checkForUpdatesToolStripMenuItem.Name = "checkForUpdatesToolStripMenuItem";
+            this.checkForUpdatesToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
+            this.checkForUpdatesToolStripMenuItem.Text = "Check for updates";
+            this.checkForUpdatesToolStripMenuItem.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(186, 6);
+            // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Image = global::PowerManager.Properties.Resources.about;
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(189, 24);
             this.aboutToolStripMenuItem.Text = "About";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
@@ -339,9 +372,10 @@
             this.lockWorkstationToolStripMenuItem1,
             this.toolStripSeparator4,
             this.aboutToolStripMenuItem1,
+            this.checkForUpdatesToolStripMenuItem1,
             this.exitToolStripMenuItem1});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(173, 196);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(192, 242);
             this.contextMenuStrip1.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip1_Opening);
             // 
             // timerToolStripMenuItem
@@ -445,9 +479,8 @@
             // 
             // exitToolStripMenuItem1
             // 
-            this.exitToolStripMenuItem1.Image = global::PowerManager.Properties.Resources.exit;
             this.exitToolStripMenuItem1.Name = "exitToolStripMenuItem1";
-            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(172, 24);
+            this.exitToolStripMenuItem1.Size = new System.Drawing.Size(191, 24);
             this.exitToolStripMenuItem1.Text = "Exit";
             this.exitToolStripMenuItem1.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
@@ -518,6 +551,13 @@
             this.toolStripStatusLabel_idle_timer.Size = new System.Drawing.Size(123, 19);
             this.toolStripStatusLabel_idle_timer.Text = "Idle Timer  00 : 00 : 00";
             this.toolStripStatusLabel_idle_timer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // checkForUpdatesToolStripMenuItem1
+            // 
+            this.checkForUpdatesToolStripMenuItem1.Name = "checkForUpdatesToolStripMenuItem1";
+            this.checkForUpdatesToolStripMenuItem1.Size = new System.Drawing.Size(191, 24);
+            this.checkForUpdatesToolStripMenuItem1.Text = "Check for Updates";
+            this.checkForUpdatesToolStripMenuItem1.Click += new System.EventHandler(this.checkForUpdatesToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -607,6 +647,11 @@
         private System.Windows.Forms.ToolStripMenuItem darkToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripMenuItem sendRatingToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripMenuItem checkForUpdatesToolStripMenuItem1;
     }
 }
 

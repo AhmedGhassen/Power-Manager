@@ -124,6 +124,12 @@
   <data name="about" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\about.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="dark_play" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\dark_play.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dark_stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\dark_stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="exit" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\exit.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -132,6 +138,15 @@
   </data>
   <data name="_lock" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\lock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="dark_pause" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\dark_pause.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="light_play" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\light_play.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="light_stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\light_stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="update" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\update.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,22 +157,10 @@
   <data name="settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\settings.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="dark_pause" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\dark_pause.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="dark_play" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\dark_play.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="dark_stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\dark_stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="light_pause" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Images\light_pause.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="light_play" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\light_play.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="light_stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\light_stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="feedback" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Images\feedback.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

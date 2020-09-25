@@ -30,6 +30,7 @@ namespace PowerManager.Forms
             checkBox_hide_main_alet_close.Checked = Properties.Settings.Default.HideMainWhenClosingAlertCloses;
             linkLabel_advanced.Enabled = checkBox_pc_idle.Checked;
             linkLabel_advanced_dev_mode.Enabled = checkBox_dev_mode.Checked;
+            checkBox_disable_when_pc_updating.Checked = Properties.Settings.Default.DisableWhenPcUpdating;
             checkTheme();
         }
 
@@ -202,6 +203,12 @@ namespace PowerManager.Forms
         private void checkBox_hide_main_alet_close_CheckedChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.HideMainWhenClosingAlertCloses = checkBox_hide_main_alet_close.Checked;
+        }
+
+        private void checkBox_disable_when_pc_updating_CheckedChanged(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.DisableWhenPcUpdating = checkBox_disable_when_pc_updating.Checked;
+            Properties.Settings.Default.Save();
         }
     }
 }

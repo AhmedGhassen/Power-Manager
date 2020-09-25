@@ -286,5 +286,17 @@ namespace PowerManager.Properties {
                 this["HideMainWhenClosingAlertCloses"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool DisableWhenPcUpdating {
+            get {
+                return ((bool)(this["DisableWhenPcUpdating"]));
+            }
+            set {
+                this["DisableWhenPcUpdating"] = value;
+            }
+        }
     }
 }

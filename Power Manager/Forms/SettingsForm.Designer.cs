@@ -38,6 +38,7 @@
             this.linkLabel_advanced = new System.Windows.Forms.LinkLabel();
             this.linkLabel_advanced_dev_mode = new System.Windows.Forms.LinkLabel();
             this.checkBox_hide_main_alet_close = new System.Windows.Forms.CheckBox();
+            this.checkBox_disable_when_pc_updating = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // checkBox_Startup
@@ -76,7 +77,7 @@
             // checkBox_pc_idle
             // 
             this.checkBox_pc_idle.AutoSize = true;
-            this.checkBox_pc_idle.Location = new System.Drawing.Point(13, 190);
+            this.checkBox_pc_idle.Location = new System.Drawing.Point(13, 225);
             this.checkBox_pc_idle.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.checkBox_pc_idle.Name = "checkBox_pc_idle";
             this.checkBox_pc_idle.Size = new System.Drawing.Size(381, 29);
@@ -88,7 +89,7 @@
             // checkBox_show_1mn_warning
             // 
             this.checkBox_show_1mn_warning.AutoSize = true;
-            this.checkBox_show_1mn_warning.Location = new System.Drawing.Point(13, 155);
+            this.checkBox_show_1mn_warning.Location = new System.Drawing.Point(13, 190);
             this.checkBox_show_1mn_warning.Name = "checkBox_show_1mn_warning";
             this.checkBox_show_1mn_warning.Size = new System.Drawing.Size(253, 29);
             this.checkBox_show_1mn_warning.TabIndex = 30;
@@ -100,7 +101,7 @@
             // checkBox_dev_mode
             // 
             this.checkBox_dev_mode.AutoSize = true;
-            this.checkBox_dev_mode.Location = new System.Drawing.Point(13, 225);
+            this.checkBox_dev_mode.Location = new System.Drawing.Point(13, 260);
             this.checkBox_dev_mode.Name = "checkBox_dev_mode";
             this.checkBox_dev_mode.Size = new System.Drawing.Size(189, 29);
             this.checkBox_dev_mode.TabIndex = 31;
@@ -110,10 +111,11 @@
             // 
             // linkLabel_advanced
             // 
+            this.linkLabel_advanced.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel_advanced.AutoSize = true;
             this.linkLabel_advanced.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.linkLabel_advanced.LinkColor = System.Drawing.Color.DodgerBlue;
-            this.linkLabel_advanced.Location = new System.Drawing.Point(465, 196);
+            this.linkLabel_advanced.Location = new System.Drawing.Point(478, 231);
             this.linkLabel_advanced.Name = "linkLabel_advanced";
             this.linkLabel_advanced.Size = new System.Drawing.Size(72, 18);
             this.linkLabel_advanced.TabIndex = 34;
@@ -123,10 +125,11 @@
             // 
             // linkLabel_advanced_dev_mode
             // 
+            this.linkLabel_advanced_dev_mode.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel_advanced_dev_mode.AutoSize = true;
             this.linkLabel_advanced_dev_mode.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.linkLabel_advanced_dev_mode.LinkColor = System.Drawing.Color.DodgerBlue;
-            this.linkLabel_advanced_dev_mode.Location = new System.Drawing.Point(465, 231);
+            this.linkLabel_advanced_dev_mode.Location = new System.Drawing.Point(478, 266);
             this.linkLabel_advanced_dev_mode.Name = "linkLabel_advanced_dev_mode";
             this.linkLabel_advanced_dev_mode.Size = new System.Drawing.Size(72, 18);
             this.linkLabel_advanced_dev_mode.TabIndex = 35;
@@ -137,7 +140,7 @@
             // checkBox_hide_main_alet_close
             // 
             this.checkBox_hide_main_alet_close.AutoSize = true;
-            this.checkBox_hide_main_alet_close.Location = new System.Drawing.Point(13, 120);
+            this.checkBox_hide_main_alet_close.Location = new System.Drawing.Point(13, 155);
             this.checkBox_hide_main_alet_close.Name = "checkBox_hide_main_alet_close";
             this.checkBox_hide_main_alet_close.Size = new System.Drawing.Size(517, 29);
             this.checkBox_hide_main_alet_close.TabIndex = 36;
@@ -145,12 +148,25 @@
             this.checkBox_hide_main_alet_close.UseVisualStyleBackColor = true;
             this.checkBox_hide_main_alet_close.CheckedChanged += new System.EventHandler(this.checkBox_hide_main_alet_close_CheckedChanged);
             // 
+            // checkBox_disable_when_pc_updating
+            // 
+            this.checkBox_disable_when_pc_updating.AutoSize = true;
+            this.checkBox_disable_when_pc_updating.Enabled = false;
+            this.checkBox_disable_when_pc_updating.Location = new System.Drawing.Point(13, 120);
+            this.checkBox_disable_when_pc_updating.Name = "checkBox_disable_when_pc_updating";
+            this.checkBox_disable_when_pc_updating.Size = new System.Drawing.Size(548, 29);
+            this.checkBox_disable_when_pc_updating.TabIndex = 37;
+            this.checkBox_disable_when_pc_updating.Text = "Disable closing / locking pc when windows is updating";
+            this.checkBox_disable_when_pc_updating.UseVisualStyleBackColor = true;
+            this.checkBox_disable_when_pc_updating.CheckedChanged += new System.EventHandler(this.checkBox_disable_when_pc_updating_CheckedChanged);
+            // 
             // SettingsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(551, 269);
+            this.ClientSize = new System.Drawing.Size(562, 302);
+            this.Controls.Add(this.checkBox_disable_when_pc_updating);
             this.Controls.Add(this.checkBox_hide_main_alet_close);
             this.Controls.Add(this.linkLabel_advanced_dev_mode);
             this.Controls.Add(this.linkLabel_advanced);
@@ -185,5 +201,6 @@
         private System.Windows.Forms.LinkLabel linkLabel_advanced;
         private System.Windows.Forms.LinkLabel linkLabel_advanced_dev_mode;
         private System.Windows.Forms.CheckBox checkBox_hide_main_alet_close;
+        private System.Windows.Forms.CheckBox checkBox_disable_when_pc_updating;
     }
 }

@@ -6,7 +6,7 @@ namespace PowerManager.Forms
 {
     public partial class AboutForm : Form
     {
-        string release = "Bêta";
+        public static string release = "Bêta";
         public AboutForm()
         {
             InitializeComponent();

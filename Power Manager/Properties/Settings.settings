@@ -68,5 +68,8 @@
     <Setting Name="HideMainWhenClosingAlertCloses" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
+    <Setting Name="DisableWhenPcUpdating" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

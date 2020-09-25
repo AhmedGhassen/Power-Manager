@@ -53,7 +53,7 @@ namespace PowerManager.Forms
             label_time_remaing.Text = remainingTime.ToString() + " s";
             if (isIdle)
             {
-                var idleTime = ActionController.GetComputeIdleTimeInSeconds();
+                var idleTime = Controller.GetComputeIdleTimeInSeconds();
                 if (idleTime == 0)
                 {
                     Properties.Settings.Default.PcIdleReminderEnabled = false;
@@ -70,15 +70,18 @@ namespace PowerManager.Forms
                 label_press.Text = "Close";
                 if (Properties.Settings.Default.PcIdleReminderAction == 1)
                 {
-                    label_action.Text = "Computer Closed";
-                    ActionController.ShutdownComputer(this);
                     
+                    bool result = Controller.ShutdownComputer(this);
+                    string res = result ? " " : " not ";
+                    label_action.Text = "Computer"+res+"Closed";
+
                 }
                 else if (Properties.Settings.Default.PcIdleReminderAction == 2)
                 {
-                    label_action.Text = "Computer Locked";
-                    ActionController.LockComputer(this);
                     
+                    bool result = Controller.LockComputer(this);
+                    string res = result ? " " : " not ";
+                    label_action.Text = "Computer"+res+"Locked";
                 }
                 
             }

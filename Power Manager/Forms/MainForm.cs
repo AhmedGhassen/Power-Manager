@@ -26,6 +26,8 @@ namespace PowerManager.Forms
         private AboutForm aboutForm = null;
         private ClosingAlertForm closingAlertForm = null;
         private ReminderMessageForm reminderMessage = null;
+        private FeedBackForm sendFeedBackForm = null;
+        private CheckUpdatesForm checkUpdatesForm = null;
 
         private string time;
 
@@ -42,7 +44,7 @@ namespace PowerManager.Forms
 
         private void TimerWhenPcIdle_Tick(object sender, EventArgs e)
         {
-            var idleTime = ActionController.GetComputeIdleTimeInSeconds();
+            var idleTime = Controller.GetComputeIdleTimeInSeconds();
             var allSecondsIdle = Properties.Settings.Default.PcIdleReminderTimeInSeconds;
             var remainingTimeIdle = TimeSpan.FromSeconds(double.Parse((allSecondsIdle - idleTime).ToString()));
             toolStripStatusLabel_idle_timer.Text = "Idle Timer  " + String.Format("{0:00}", remainingTimeIdle.Hours) + " : " + String.Format("{0:00}", remainingTimeIdle.Minutes) + " : " + String.Format("{0:00}", remainingTimeIdle.Seconds);
@@ -464,7 +466,14 @@ namespace PowerManager.Forms
 
         private void checkTheme()
         {
-
+            if (checkUpdatesForm !=null)
+            {
+                checkUpdatesForm.checkTheme();
+            }
+            if (sendFeedBackForm !=null)
+            {
+                sendFeedBackForm.checkTheme();
+            }
             if (reminderMessage != null)
             {
                 reminderMessage.checkTheme();
@@ -560,6 +569,34 @@ namespace PowerManager.Forms
                     menuStrip1.Items[i].ForeColor = SystemColors.ControlLightLight;
                     menuStrip1.Items[i].BackColor = Properties.Settings.Default.DarkThemeColor;
                 }
+            }
+        }
+
+        private void sendRatingToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (sendFeedBackForm == null)
+            {
+                sendFeedBackForm = new FeedBackForm();
+                sendFeedBackForm.ShowDialog();
+                sendFeedBackForm = null;
+            }
+            else
+            {
+                sendFeedBackForm.Focus();
+            }
+        }
+
+        private void checkForUpdatesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (checkUpdatesForm ==null)
+            {
+                checkUpdatesForm = new CheckUpdatesForm();
+                checkUpdatesForm.ShowDialog();
+                checkUpdatesForm = null;
+            }
+            else
+            {
+                checkUpdatesForm.Focus();
             }
         }
     }
